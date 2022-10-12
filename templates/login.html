@@ -1,0 +1,56 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <div class="container container-login my-5">
+        <div class="myCard">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="myLeftCtn">
+                <form action="" method="get"> 
+                  <header>Create new account</header>
+                  <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="myInput" placeholder="username" id="username" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" class="myInput" placeholder="email" id="email" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="text" class="myInput" placeholder="password" id="password" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" id="check1" name="check_1">
+                      <small>I read and agree to Terms & Conditions</small>
+                      <div class="invalid-feedback">Please fill out this field.</div>
+                    </label>
+                  </div>
+                  <input type="submit" value="CREATE ACCOUNT" class="m-btn">
+                </form>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="myRightCtn">
+                <div class="box">
+                  <header>Sign-Up</header>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos vero, alias, est itaque blanditiis illum dolorum, recusandae sed .</p> 
+                  <input type="button" value="Learn More" class="m-btn-out">
+                  <div class="redirect mt-3">
+                    <span>Create a new account?</span>
+                    <a href="/signup">Click Here</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+{% endblock content %}

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #fbf3fb;
+    height: 100vh;
+}
+.container-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    height: 400px;
+    margin: 60px auto;
+    /* margin: auto; */
+}
+.myRightCtn{
+    background-image: linear-gradient(45deg, #f046ff, #900e89);
+    border-radius: 25px;
+    padding: 25px;
+    height: 100%;
+    color: rgb(192, 192, 192);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+.myLeftCtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 25px;
+    padding: 25px;
+    height: 100%;
+    padding-left: 25px;
+}
+.myLeftCtn header{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: blueviolet;
+}
+.row{
+    height: 100%;
+}
+.myCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 25px;
+    height: 100%;
+    /* padding: 25px; */
+    /* -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); */
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+}
+.myRightCtn header{
+    font-size: 30px;
+    color: #fff;
+}
+.box{
+    margin: 20px;
+    margin-bottom: 100px;
+}
+.myLeftCtn .myInput{
+    width: 230px;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    padding-left: 50px;
+    outline: none;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+.myLeftCtn .myInput:focus{
+    outline: none;
+}
+.myForm{
+    margin-top: 50px;
+}
+.myLeftCtn .m-btn{
+    background-image: linear-gradient(45deg, #bb36fd, #9b009b);
+    color: #fff;
+    width: 230px;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+}
+.myLeftCtn .m-btn:hover{
+    background: linear-gradient(45deg, #c85bff, #b726ff);
+}
+.myLeftCtn .myInput:focus{
+    outline: none;
+}
+.fas{
+    color: #bb36fd;
+    left: 16px;
+}
+.m-btn-out{
+    background: transparent;
+    color: #fff;
+    width: 120px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    padding: 10px;
+}
+.m-btn-out:hover{
+    background: linear-gradient(45deg, #c85bff, #b726ff);
+}
+.myRightCtn .redirect{
+    margin-top: 20px;
+    color: #fff;
+}
+.myRightCtn .redirect a{
+    color: #360136;
+    text-decoration: none;
+}
