@@ -1,8 +1,11 @@
 {% extends 'navbar.html' %}
 {% load static %}
 {% block title %}SignUp{% endblock title %}
+{% block navbar-right-box-value %}Login{% endblock navbar-right-box-value %}
+{% block navbar-right-box-link %}{% url 'login' %}{% endblock navbar-right-box-link %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <div class="container container-login ">
         <div class="myCard">
           <div class="row">
@@ -26,6 +29,11 @@
                     <div class="invalid-feedback">Please fill out this field.</div>
                   </div>
                   <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="text" class="myInput" placeholder="re-password" id="re-password" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <div class="form-group">
                     <label>
                       <input type="checkbox" id="check1" name="check_1">
                       <small>I read and agree to Terms & Conditions</small>
@@ -43,8 +51,8 @@
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos vero, alias, est itaque blanditiis illum dolorum, recusandae sed .</p> 
                   <input type="button" value="Learn More" class="m-btn-out">
                   <div class="redirect mt-3">
-                    <span>Create a new account?</span>
-                    <a href="/signup">Click Here</a>
+                    <span>Already an account?</span>
+                    <a href="/login">Click Here</a>
                   </div>
                 </div>
               </div>
@@ -52,5 +60,5 @@
           </div>
         </div>
     </div>
-    
+    {% block footer %}{% endblock footer %}
 {% endblock content %}

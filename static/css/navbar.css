@@ -1,11 +1,15 @@
- .navbar{
-    background-color: rgba(1, 170, 38, 0.836);
- }
-
-.manual_login_css{
-    color: azure !important;
-    font-size: 20px !important;
-    letter-spacing: 1px;
-    transition: 0.4s all ease-in-out;
-
+.login-btn{
+    border: 2px solid aliceblue;
+    border-radius: 10px;
+    outline: none;
+    color: aliceblue;
+}
+.login-btn a{
+    color: aliceblue;
+    text-decoration: none;
+    outline: none;
+}
+.login-btn a:hover{
+    color: aliceblue;
+    outline: none;
 }

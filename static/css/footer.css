@@ -1,0 +1,25 @@
+.c-footer{
+    background-color: black;
+}
+.footer h3{
+    color: white;
+}
+.footer p{
+    color: rgb(72, 255, 0);
+}
+.footer ul{
+    margin: 0;
+    padding: 0;
+}
+.footer ul li{
+    list-style: none;
+    padding: 0 10px;
+}
+.footer ul li a{
+    color: rgb(216, 216, 216);
+    text-decoration: none;
+    font-size: 15px;
+}
+.footer ul li a:hover{
+    color: #ff3c00;
+}

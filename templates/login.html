@@ -1,20 +1,18 @@
 {% extends 'navbar.html' %}
 {% load static %}
 {% block title %}Login{% endblock title %}
+{% block navbar-right-box-value %}SignUp{% endblock navbar-right-box-value %}
+{% block navbar-right-box-link %}{% url 'signup' %}{% endblock navbar-right-box-link %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
-    <div class="container container-login my-5">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <div class="container container-login ">
         <div class="myCard">
           <div class="row">
             <div class="col-md-6">
               <div class="myLeftCtn">
                 <form action="" method="get"> 
-                  <header>Create new account</header>
-                  <div class="form-group">
-                    <i class="fas fa-user"></i>
-                    <input type="text" class="myInput" placeholder="username" id="username" required>
-                    <div class="invalid-feedback">Please fill out this field.</div>
-                  </div>
+                  <header>Already an account</header>
                   <div class="form-group">
                     <i class="fas fa-envelope"></i>
                     <input type="text" class="myInput" placeholder="email" id="email" required>
@@ -32,14 +30,14 @@
                       <div class="invalid-feedback">Please fill out this field.</div>
                     </label>
                   </div>
-                  <input type="submit" value="CREATE ACCOUNT" class="m-btn">
+                  <input type="submit" value="LOGIN ACCOUNT" class="m-btn">
                 </form>
               </div>
             </div>
             <div class="col-md-6">
               <div class="myRightCtn">
                 <div class="box">
-                  <header>Sign-Up</header>
+                  <header>Login</header>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos vero, alias, est itaque blanditiis illum dolorum, recusandae sed .</p> 
                   <input type="button" value="Learn More" class="m-btn-out">
                   <div class="redirect mt-3">
@@ -52,5 +50,5 @@
           </div>
         </div>
     </div>
-    
+    {% block footer %}{% endblock footer %}
 {% endblock content %}
