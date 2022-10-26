@@ -8,10 +8,14 @@ def index(request):
 def about(request):
     return render(request,'about.html')
 def services(request):
-    return HttpResponse("this is from ssbm.views.services")
+    return render(request,'services.html')
+    # return HttpResponse("services.html")
 def booking(request):
-    return HttpResponse("this is from ssbm.views.booking")
+    return render(request,'bookings.html')
+    # return HttpResponse("this is from ssbm.views.booking")
 def login(request):
-    return render(request,'login.html')
+    return render(request,'login_page.html')
 def signup(request):
-    return render(request,'signup.html')
+    return render(request,'signup_page.html')
+def prmtmsg(request):
+    return render(request,'prompt_message.html')

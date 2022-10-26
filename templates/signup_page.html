@@ -1,0 +1,71 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}SignUp{% endblock title %}
+{% block navbar-right-box-value %}Login{% endblock navbar-right-box-value %}
+{% block navbar-right-box-link %}{% url 'login' %}{% endblock navbar-right-box-link %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <div class="container container-login ">
+        <div class="myCard">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="myLeftCtn">
+                <form action="{% url 'signup' %}" method="post"> 
+                  {% csrf_token %}
+                  {% load static %}
+                  <header>Create new account</header>
+                  <div class="form-group ">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="myInput" placeholder="username" id="username" name="sname" value="{{dname}}" required>
+                    <div class="invalid-feedback">{{error4}}{{error7}}{{error15}}</div>                    
+                  </div>
+                  <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" class="myInput" placeholder="email" id="email" name="semail" value="{{demail}}" required>
+                    <div class="invalid-feedback">{{error6}}{{error8}}{{error9}}{{error10}}{{error11}}{{error12}}{{error13}}{{error14}}{{error15}}{{error22}}{{error17}}</div>
+                  </div>
+                  <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" class="myInput" placeholder="password" id="password" name="spassword" value="{{dpassword}}" required>
+                    <div class="invalid-feedback">{{error2}}{{error4}}{{error3}}{{error16}}{{error18}}{{error19}}{{error20}}{{error21}}</div>
+                  </div>
+                  <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" class="myInput" placeholder="re-password" id="re-password" name="srepassword" value="{{drepassword}}" required>
+                    <div class="invalid-feedback">{{error2}}</div>
+                    <div class="invalid-feedback">{{error1}}</div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <input type="submit" value="CREATE ACCOUNT" class="m-btn">
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="myRightCtn">
+                <div class="box">
+                  <header>Sign-Up</header>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos vero, alias, est itaque blanditiis illum dolorum, recusandae sed .</p> 
+                  {% comment %} <input type="button" value="Learn More" class="m-btn-out"> {% endcomment %}
+                  <div class="redirect mt-3">
+                    <span>Already an account?</span>
+                    <a href="/login">Click Here</a>
+                  </div>
+                  <div class="redirect mt-3">
+                    <span>Forgot Password?</span>
+                    <a href="/reset">Click Here</a>
+                  </div>
+                  <div class="redirect mt-3">
+                    <span>Take a Hint</span>
+                    <a href=""><i class="fa fa-info-circle pl-2 text-warning"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% block footer %}{% endblock footer %}
+{% endblock content %}

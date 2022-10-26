@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 body{
     background: #fbf3fb;
@@ -13,10 +14,9 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 800px;
-    height: 400px;
+    max-width: 900px;
+    height: 500px;
     margin: 80px auto;
-    /* margin: auto; */
 }
 .myRightCtn{
     background-image: linear-gradient(45deg, #389c3d, #008516);
@@ -36,10 +36,11 @@ body{
     align-items: center;
     background: #fff;
     border-radius: 25px;
-    padding: 25px;
+    padding: 22px;
     height: 100%;
 }
 .myLeftCtn header{
+    text-align: center;
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 12px;
@@ -63,20 +64,27 @@ body{
 }
 .box{
     margin: 20px;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
+}
+.form-group div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .myLeftCtn .form-group{
     margin-bottom: 10px;
 }
 .myLeftCtn .myInput{
-    width: 230px;
+    width: 290px;
     border: none;
     border-radius: 25px;
     padding: 10px;
-    padding-left: 50px;
+    padding-left: 20px;
     outline: none;
     letter-spacing: 1px;
     font-size: 15px;
+    margin-left: 20px;
 }
 .myLeftCtn .myInput:focus{
     outline: none;
@@ -86,7 +94,6 @@ body{
 }
 .myLeftCtn .m-btn{
     background-image: linear-gradient(45deg, #36fd46, #009b1a);
-    /* background-image: linear-gradient(45deg, #bb36fd, #9b009b); */
     color: #fff;
     width: 230px;
     border: none;
@@ -115,7 +122,6 @@ body{
     border: 2px solid #fff;
     border-radius: 25px;
     padding: 10px;
-
 }
 .m-btn-out:hover{
     background: linear-gradient(45deg, #00b30f, #18c730);

@@ -4,33 +4,28 @@
 {% block navbar-right-box-value %}SignUp{% endblock navbar-right-box-value %}
 {% block navbar-right-box-link %}{% url 'signup' %}{% endblock navbar-right-box-link %}
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <div class="container container-login ">
         <div class="myCard">
           <div class="row">
             <div class="col-md-6">
               <div class="myLeftCtn">
-                <form action="" method="get"> 
+                <form action="" method="get" autocomplte="off"> 
                   <header>Already an account</header>
                   <div class="form-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="text" class="myInput" placeholder="email" id="email" required>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <input type="text" class="myInput" placeholder="email" id="email" name="lemail" required>
+                    <div class="invalid-feedback">{{error}}</div>
                   </div>
                   <div class="form-group">
                     <i class="fas fa-lock"></i>
-                    <input type="text" class="myInput" placeholder="password" id="password" required>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <input type="password" class="myInput" placeholder="password" id="password" name="lpassword" required autocomplte="off">
+                    <div class="invalid-feedback">{{error}}</div>
                   </div>
                   <div class="form-group">
-                    <label>
-                      <input type="checkbox" id="check1" name="check_1">
-                      <small>I read and agree to Terms & Conditions</small>
-                      <div class="invalid-feedback">Please fill out this field.</div>
-                    </label>
+                    <input type="submit" value="LOGIN ACCOUNT" class="m-btn">
                   </div>
-                  <input type="submit" value="LOGIN ACCOUNT" class="m-btn">
                 </form>
               </div>
             </div>
@@ -39,10 +34,17 @@
                 <div class="box">
                   <header>Login</header>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos vero, alias, est itaque blanditiis illum dolorum, recusandae sed .</p> 
-                  <input type="button" value="Learn More" class="m-btn-out">
                   <div class="redirect mt-3">
-                    <span>Create a new account?</span>
-                    <a href="/signup">Click Here</a>
+                    <span>Already an account?</span>
+                    <a href="/login">Click Here</a>
+                  </div>
+                  <div class="redirect mt-3">
+                    <span>Forgot Password?</span>
+                    <a href="/reset">Click Here</a>
+                  </div>
+                  <div class="redirect mt-3">
+                    <span>Take a Hint</span>
+                    <a href=""><i class="fa fa-info-circle pl-2 text-warning"></i></a>
                   </div>
                 </div>
               </div>

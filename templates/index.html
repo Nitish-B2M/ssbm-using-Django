@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+{% comment %} <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li
       data-target="#carouselExampleIndicators"
@@ -62,7 +62,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> {% endcomment %}
   <section class="pt-5 pb-5">
     <div class="container">
         <div class="row">
@@ -77,7 +77,7 @@
                     <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
-            <div class="col-12">
+            {% comment %} <div class="col-12">
                 <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -182,13 +182,11 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
 </section>
 {% endblock content %}

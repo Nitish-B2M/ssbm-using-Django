@@ -31,6 +31,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+    {% block head-link %}{% endblock head-link %}
     <title>{% block title %}{% endblock title %} | SSBM</title>
   </head>
   <body>
@@ -178,5 +179,6 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
 </html>
