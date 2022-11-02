@@ -1,0 +1,29 @@
+.card {
+    color: antiquewhite;
+}
+.card-main:nth-child(3n+2) > .card{
+    background: cadetblue;
+}
+.card-main:nth-child(3n) > .card{
+    background: coral;
+}
+.card-main:nth-child(3n+1) > .card{
+    background: firebrick;
+}
+
+/* manager service  or managerMS.html*/
+.managerms .col-md-4 {
+    max-width: 30% !important;
+    border: 1px solid rgb(5, 165, 90);
+    padding: 0;
+    margin: 0 6px;
+    padding: 10px;
+}
+.managerms .boxes .col-md-4 .img-fluid{
+    max-height: 200px !important;
+}
+.managerms .boxes .col-md-4 a{
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+/* show, add, and remove event css */

@@ -1,9 +1,12 @@
-{% extends 'navbar.html' %} {% load static %} {% block title %}Home{% endblock title %} {% block navbar-right-box-value %}Login{%endblock navbar-right-box-value %} {% block navbar-right-box-link %}{% url 'login'%}{%endblock navbar-right-box-link %} {% block content %}
+
+{% extends 'navbar.html' %} {% load static %} {% block title %}Home{% endblock title %} {% block navbar_op2_link %}/signup{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Signup{% endblock navbar_op2_value %}{% block navbar-right-box-value %}Login{%endblock navbar-right-box-value %} {% block navbar-right-box-link %}{% url 'login'%}{%endblock navbar-right-box-link %} {% block content %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" />
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-{% comment %} <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
+<link rel="stylesheet" href="{% static 'css/simpleManipulation.css' %}" />
+ {% comment %} <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"> 
+  <ol class="carousel-indicators"> 
     <li
       data-target="#carouselExampleIndicators"
       data-slide-to="0"
@@ -62,7 +65,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div> {% endcomment %}
+</div>  {% endcomment %}
   <section class="pt-5 pb-5">
     <div class="container">
         <div class="row">
@@ -77,13 +80,13 @@
                     <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
-            {% comment %} <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
+            <div class="col-12">
+                {% comment %} <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel"> 
+                    <div class="carousel-inner"> 
                         <div class="carousel-item active">
                             <div class="row">
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 card-main">
                                     <div class="card">
                                         <img class="img-fluid" alt="image-not-found" src="https://source.unsplash.com/300x300/?stadium-cricket">
                                         <div class="card-body">
@@ -93,7 +96,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 card-main">
                                     <div class="card">
                                         <img class="img-fluid" alt="100%x280" src="https://source.unsplash.com/300x300/?stadium">
                                         <div class="card-body">
@@ -103,7 +106,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 card-main">
                                     <div class="card">
                                         <img class="img-fluid" alt="100%x280" src="https://source.unsplash.com/300x300/?stadium-football">
                                         <div class="card-body">
@@ -117,7 +120,7 @@
 
                         <div class="carousel-item">
                             <div class="row">
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 card-main">
                                     <div class="card">
                                         <img class="img-fluid" alt="100%x280" src="https://source.unsplash.com/300x300/?stadium-seat">
                                         <div class="card-body">
@@ -127,7 +130,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 card-main">
                                     <div class="card">
                                         <img class="img-fluid" alt="100%x280" src="https://source.unsplash.com/300x300/?stadium-concert">
                                         <div class="card-body">
@@ -137,7 +140,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 card-main">
                                     <div class="card">
                                         <img class="img-fluid" alt="100%x280" src="https://source.unsplash.com/300x300/?stadium-politics">
                                         <div class="card-body">
@@ -151,7 +154,7 @@
 
                         <div class="carousel-item">
                             <div class="row">
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 card-main">
                                     <div class="card">
                                         <img class="img-fluid" alt="100%x280" src="https://source.unsplash.com/300x300/?stadium-fiels">
                                         <div class="card-body">
@@ -161,7 +164,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 card-main">
                                     <div class="card">
                                         <img class="img-fluid" alt="100%x280" src="https://source.unsplash.com/300x300/?stadium-champions">
                                         <div class="card-body">
@@ -171,7 +174,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3 card-main">
                                     <div class="card">
                                         <img class="img-fluid" alt="100%x280" src="https://source.unsplash.com/300x300/?stadium-dance">
                                         <div class="card-body">
@@ -180,12 +183,10 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                        </div> {% endcomment %}
+                        </div> 
                     </div>
-                </div>
-            </div>
+                </div>  {% endcomment %}
         </div>
     </div>
 </section>

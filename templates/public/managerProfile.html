@@ -1,0 +1,15 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main_page_link %}{% url 'managerMainPage' %}{% endblock main_page_link %}
+{% block main_page_link2 %}{% url 'managerMainPage' %}{% endblock main_page_link2 %}
+{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %}
+{% block navbar-right-box-link %}{% url 'managerProfile' %}{% endblock navbar-right-box-link %}
+{% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+{% endblock content %}
+{% block footer %}{% endblock footer %}

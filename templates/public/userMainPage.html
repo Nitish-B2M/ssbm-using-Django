@@ -1,0 +1,12 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}User Home{% endblock title %}
+{% block main_page_link %}{% url 'userMainPage' %}{% endblock main_page_link %}
+{% block main_page_link2 %}{% url 'userMainPage' %}{% endblock main_page_link2 %}
+{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %}
+{% comment %} {% block navbar-right-box-link %}{% url 'userProfile'  %}{% endblock navbar-right-box-link %} {% endcomment %}
+{% block navbar-right-box-link %}{% url 'userProfile'%}{% endblock navbar-right-box-link %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock content %}

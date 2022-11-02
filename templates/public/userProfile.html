@@ -1,0 +1,21 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% with "user" as profile  %} 
+{% if public == 'user' %}
+{% block main_page_link %}{% url 'userMainPage' %}{% endblock main_page_link %}
+{% block main_page_link2 %}{% url 'userMainPage' %}{% endblock main_page_link2 %}
+{% else %}
+{% comment %} {% block main_page_link %}{% url 'adminMainPage' %}{% endblock main_page_link %}
+{% block main_page_link2 %}{% url 'adminMainPage' %}{% endblock main_page_link2 %} {% endcomment %}
+{% endif %}{% endwith %}
+{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %}
+{% block navbar-right-box-link %}{% url 'userProfile' %}{% endblock navbar-right-box-link %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+{% comment %} access request session name {% endcomment %}
+
+{% endblock content %}
+{% block footer %}{% endblock footer %}

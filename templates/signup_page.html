@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="myLeftCtn">
-                <form action="{% url 'signup' %}" method="post"> 
+                <form action="{% url 'signup' %}" method="post" autocomplte="off"> 
                   {% csrf_token %}
                   {% load static %}
                   <header>Create new account</header>
@@ -26,17 +26,28 @@
                     <div class="invalid-feedback">{{error6}}{{error8}}{{error9}}{{error10}}{{error11}}{{error12}}{{error13}}{{error14}}{{error15}}{{error22}}{{error17}}</div>
                   </div>
                   <div class="form-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" class="myInput" placeholder="password" id="password" name="spassword" value="{{dpassword}}" required>
-                    <div class="invalid-feedback">{{error2}}{{error4}}{{error3}}{{error16}}{{error18}}{{error19}}{{error20}}{{error21}}</div>
-                  </div>
+                    <i class="fas fa-eye"></i>
+                    <input type="text" class="myInput" placeholder="security key" id="skey" name="skey" value="{{dskey}}" required>
+                    <div class="invalid-feedback">{{error23}}</div>
+                  </div>                  
                   <div class="form-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" class="myInput" placeholder="re-password" id="re-password" name="srepassword" value="{{drepassword}}" required>
-                    <div class="invalid-feedback">{{error2}}</div>
+                    <input type="password" class="myInput" style="width:150px;" placeholder="password" id="password" name="spassword" value="{{dpassword}}" required>
+                    {% comment %} </div>
+                    <div class="form-group">
+                      <i class="fas fa-lock"></i> {% endcomment %}
+                    <input type="password" class="myInput" style="width:150px; margin:0;" placeholder="re-password" id="re-password" name="srepassword" value="{{drepassword}}" required>
+                    <div class="invalid-feedback">{{error2}}{{error4}}{{error3}}{{error16}}{{error18}}{{error19}}{{error20}}{{error21}}</div>
+                    {% comment %} <div class="invalid-feedback">{{error2}}</div> {% endcomment %}
+                  </div>
+                  <div class="form-group">
+                    <i class="fas fa-users"></i>
+                    <input type="radio" class="myInput" id="customer1" style="width:40px;" name="sradio" value="user" required>
+                    <label for="customer1">user</label>
+                    <input type="radio" class="myInput" id="customer2" style="width:40px;" name="sradio" value="manager" required>
+                    <label for="customer2">manager</label>
                     <div class="invalid-feedback">{{error1}}</div>
                   </div>
-                  
                   <div class="form-group">
                     <input type="submit" value="CREATE ACCOUNT" class="m-btn">
                   </div>
@@ -55,11 +66,11 @@
                   </div>
                   <div class="redirect mt-3">
                     <span>Forgot Password?</span>
-                    <a href="/reset">Click Here</a>
+                    <a href="/resetPassword">Click Here</a>
                   </div>
                   <div class="redirect mt-3">
                     <span>Take a Hint</span>
-                    <a href=""><i class="fa fa-info-circle pl-2 text-warning"></i></a>
+                    <a href=""><i class="fa fa-info-circle pl-2"></i> Click me</a>
                   </div>
                 </div>
               </div>
@@ -69,3 +80,5 @@
     </div>
     {% block footer %}{% endblock footer %}
 {% endblock content %}
+
+{% comment %} label any tag {% endcomment %}

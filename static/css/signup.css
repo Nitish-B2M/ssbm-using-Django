@@ -15,8 +15,8 @@ body{
     justify-content: center;
     align-items: center;
     max-width: 900px;
-    height: 500px;
-    margin: 80px auto;
+    height: 480px;
+    margin: 40px auto;
 }
 .myRightCtn{
     background-image: linear-gradient(45deg, #389c3d, #008516);
@@ -55,7 +55,7 @@ body{
     align-items: center;
     background: #fff;
     border-radius: 25px;
-    height: 100%;
+    height: 90%;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
 }
 .myRightCtn header{
@@ -132,7 +132,10 @@ body{
     font-size: 16px;
 }
 .myRightCtn .redirect a{
-    color: rgb(3, 194, 121);
+    color: #11ece5;
     /* color: #360136; */
     text-decoration: none;
+}
+.myLeftCtn .radio-css > .myInput {
+    width: 30px;
 }

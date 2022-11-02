@@ -1,0 +1,85 @@
+{% extends 'navbar.html' %}
+{% load static %} 
+{% block title %}Add Event{%endblock title %} 
+{% block main_page_link %}{% url 'managerMainPage' %}{% endblock main_page_link %} 
+{% block main_page_link2 %}{% url 'managerMainPage'%}{% endblock main_page_link2 %} 
+{% block navbar-right-box-link %}{% url 'managerProfile' %}{% endblock navbar-right-box-link %} 
+{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
+{% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
+{% block content %} 
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/simpleManipulation.css' %}" />
+<link rel="stylesheet" href="{% static 'css/event.css' %}" />
+<div class="container py-5">
+    <div class="myCard">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="eventbox">
+            <form action="{% url 'addEvent' %}" method="post" autocomplte="off"> 
+              {% csrf_token %}
+              {% load static %}
+              <header>Event Form</header>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <i class="fas fa-pen"></i>
+                    <input type="text" class="myInput" placeholder="Event Name" id="eventname" name="leventname" required>
+                  </div>
+                  <div class="col-md-6">
+                    <i class="fas fa-lock"></i>
+                    <input type="text" class="myInput" placeholder="Event Organization Name" id="eventorganization" name="leventorganization" required >
+                  </div>
+                </div>
+                <div class="invalid-feedback">{{error}}</div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" class="myInput" placeholder="eventdate" id="eventdate" name="leventdate" required>
+                  </div>
+                  <div class="col-md-6">
+                    <i class="fas fa-clock"></i>
+                    <input type="text" class="myInput" placeholder="short venue" id="eventvenue" name="leventvenue" required>
+                  </div>
+                </div>
+                <div class="invalid-feedback">{{error}}</div>
+              </div>
+              <div class="form-group eventtime">
+                <div class="col-md-6">
+                  <i class="fas fa-clock"></i>
+                  <span for="time1">start time </span>
+                  <input type="time" class="myInput1" id="time1" min="09:00" max="00:00" name="leventstarttime" value="user" required>
+                </div>
+                <div class="col-md-6">
+                  <i class="fas fa-clock"></i>
+                  <span for="time2">end time </span>
+                  <input type="time" class="myInput1" id="time2" name="leventendtime" value="manager" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea placeholder="enter event description" rows="3" name="leventdesc" class="form-control"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="ADD EVENT" class="m-btn">
+              </div>
+            </form>
+          </div>
+        </div>
+        {% comment %} <div class="col-md-6">
+          <div class="eventbox">
+              {% csrf_token %}
+              {% load static %}
+              <header>Don't have an account</header>
+              <div class="form-group  ">
+                <i class="fas fa-user"></i>
+                <input type="text" class="myInput" placeholder="name" id="name" name="sname" required>
+              </div>
+          </div>
+        </div> {% endcomment %}
+      </div>
+    </div>
+</div>
+{% endblock content %}
+{% block footer %}{% endblock footer %}

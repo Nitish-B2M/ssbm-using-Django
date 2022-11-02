@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% load static %} 
+{% block title %}Show Event{%endblock title %} 
+{% block main_page_link %}{% url 'managerMainPage' %}{% endblock main_page_link %} 
+{% block main_page_link2 %}{% url 'managerMainPage'%}{% endblock main_page_link2 %} 
+{% block navbar-right-box-link %}{% url 'managerProfile' %}{% endblock navbar-right-box-link %} 
+{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
+{% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
+{% block content %} 
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/simpleManipulation.css' %}" />
+<link rel="stylesheet" href="{% static 'css/event.css' %}" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Event Details</h3>
+                </div>
+                <div class="panel-body event">
+                    <div class="row">
+                        <div class=" col-md-9 col-lg-9 "> 
+                            <table class="table table-user-information">
+                                {% comment %} {{event}} {% endcomment %}
+                            </table>
+                            <a href="{% url 'removeEvent' %}" class="btn btn-primary">Edit</a>
+                            <a href="{% url 'removeEvent' %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}
+{% block footer %}{% endblock footer %}

@@ -37,11 +37,10 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-success bg-success">
       <div class="container">
-        <a class="navbar-brand fs-3 text-white" href="/">SSBM</a>
+        <a class="navbar-brand fs-4 text-white" href="{% block main_page_link %}{% endblock main_page_link%}">SSBM</a>
         <button
           class="navbar-toggler"
-          type="button"
-          
+          type="button"          
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
           aria-controls="navbarNav"
@@ -54,30 +53,30 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a
-                class="nav-link fs-5 text-white active"
+                class="nav-link text-white active"
                 aria-current="page"
-                href="/"
+                href="{% block main_page_link2%}{% endblock main_page_link2%}"
                 >Home</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link fs-5 text-white" href="/about">About</a>
+              <a class="nav-link text-white" href="/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fs-5 text-white" href="/services">Services</a>
+              <a class="nav-link text-white" href="{% block navbar_op2_link %}{% endblock navbar_op2_link %}">{% block navbar_op2_value %}{% endblock navbar_op2_value %}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fs-5 text-white" href="/booking">Booking</a>
+              <a class="nav-link text-white" href="/booking">Booking</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fs-5 text-white" href="/more">More</a>
+              <a class="nav-link text-white" href="/more">More</a>
             </li>
           </ul>
         </div>
 
         <div class="d-flex login-btn">
           <a
-            class="btn btn-lg"
+            class="btn btn-lg fs-6 "
             href={% block navbar-right-box-link %}{% endblock navbar-right-box-link%} role="button">
             {% block navbar-right-box-value %}{% endblock navbar-right-box-value %}
           </a>
@@ -179,6 +178,5 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
 </html>

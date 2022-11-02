@@ -43,11 +43,6 @@ Toast.fire({
                 bg: '#000000',
                 color: '#ffffff',
                 timer: 4000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
             })
             setTimeout(function(){
                 window.location.href = "../login";
