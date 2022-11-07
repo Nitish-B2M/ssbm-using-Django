@@ -6,24 +6,21 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
     </head>
     <body style="background:#2d2;">
-        
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
+            var selector_field = document.getElementById("selector_field").value;
             swal({
-                icon: 'success',
-                title: 'Register Successfully',
-                text: 'Redirecting to login page',
-                bg: '#000000',
-                color: '#ffffff',
-                timer: 4000,
-            })
+                icon: "success",
+                title: "Event added Successfully!!!",
+                text: "Redirecting to Services page",
+                button: "OK",
+            });
             setTimeout(function(){
-                window.location.href = "../login";
+                window.location.href = "/public/managerServices/managerMS/";
             }, 3000);
         </script>
         
     </body>
-</html>
+</html> 

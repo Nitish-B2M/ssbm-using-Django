@@ -5,7 +5,7 @@
 .eventbox{
     width: 100%;
     border-radius: 5px;
-    padding: 30px 70px;
+    padding: 10px 0px;
 }
 .eventbox header{
     text-align: center;
@@ -23,22 +23,21 @@
     background: #fff;
     border-radius: 25px;
     height: 90%;
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.582);
 }
-.eventbox .myInput,.myInput1,span{
+.eventbox .myInput,.myInput1,.myInput2,span{
     width: 290px;
     border: none;
-    border-radius: 25px;
+    border-radius: 0px 13px 13px 0px;
     padding: 10px;
     padding-left: 20px;
     outline: none;
     letter-spacing: 1px;
-    font-size: 15px;
+    font-size: 16px;
     margin-left: 20px;
     border: 1px solid #444;
-    font-size: 17px;
 }
-.eventbox .myInput:focus,.myInput1:focus{
+.eventbox .myInput:focus,.myInput1:focus,.myInput2:focus{
     outline: none;
 }
 .eventbox .form-group{
@@ -49,6 +48,7 @@
 .fas{
     height: 10px;
     width: 10px;
+    color: #017c72;
 }
 .fas::before{
     height: 10px;
@@ -64,8 +64,18 @@
 .eventbox .myInput1{
     margin-left: 10px;
 }
+.eventbox .myInput2{
+    width: 220px;
+}
+.eventbox .myInput2{
+    margin-left: 10px;
+}
 .eventbox span{
     padding-top: 13px;
+    color: #017c72;
+    font-size: 14px;
+    border-radius: 13px 0px 0px 13px;
+    font-weight: 500;
     padding-bottom: 13px;
 }
 
@@ -94,3 +104,4 @@
 .eventbox textarea:focus{
     outline: none;
 }
+

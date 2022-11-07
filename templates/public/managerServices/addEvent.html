@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <link rel="stylesheet" href="{% static 'css/simpleManipulation.css' %}" />
 <link rel="stylesheet" href="{% static 'css/event.css' %}" />
-<div class="container py-5">
+<div class="container pt-5 pb-4">
     <div class="myCard">
       <div class="row">
         <div class="col-md-12">
@@ -31,7 +31,6 @@
                     <input type="text" class="myInput" placeholder="Event Organization Name" id="eventorganization" name="leventorganization" required >
                   </div>
                 </div>
-                <div class="invalid-feedback">{{error}}</div>
               </div>
               <div class="form-group">
                 <div class="row">
@@ -44,7 +43,18 @@
                     <input type="text" class="myInput" placeholder="short venue" id="eventvenue" name="leventvenue" required>
                   </div>
                 </div>
-                <div class="invalid-feedback">{{error}}</div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <i class="fas fa-columns"></i>
+                    <input type="text" class="myInput" placeholder="no. of columns" id="eventcol" name="leventcol" required>
+                  </div>
+                  <div class="col-md-6">
+                    <i class="fas fa-table"></i>
+                    <input type="text" class="myInput" placeholder="no. of rows" id="eventrow" name="leventrow" required >
+                  </div>
+                </div>
               </div>
               <div class="form-group eventtime">
                 <div class="col-md-6">
@@ -59,9 +69,16 @@
                 </div>
               </div>
               <div class="form-group">
-                <textarea placeholder="enter event description" rows="3" name="leventdesc" class="form-control"></textarea>
+                <div class="col-md-5">
+                  <i class="fas fa-clock"></i>
+                  <input type="text" class="myInput2" id="price" name="lprice" placeholder="single seat price" required>
+                </div>
+                <div class="col-md-7">
+                  <textarea placeholder="enter event description" rows="3" name="leventdesc" class="form-control"></textarea>
+                </div>
               </div>
               <div class="form-group">
+                <div class="invalid-feedback">{{error1}}{{error2}}{{error3}}{{error4}}{{error5}}{{error6}}</div>
                 <input type="submit" value="ADD EVENT" class="m-btn">
               </div>
             </form>

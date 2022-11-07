@@ -1,17 +1,26 @@
 {% extends 'navbar.html' %} 
 {% load static %} 
+
 {% block title %}Manager Home{%endblock title %} 
+
 {% block main_page_link %}{% url 'managerMainPage' %}{% endblock main_page_link %} 
 {% block main_page_link2 %}{% url 'managerMainPage'%}{% endblock main_page_link2 %} 
+
 {% block navbar-right-box-link %}{% url 'managerProfile' %}{% endblock navbar-right-box-link %} 
 {% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
+
 {% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
 {% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
+
+{% block navbar-dd-link3 %}/logout/{% endblock navbar-dd-link3 %}
+{% block navbar-dd-value3 %}logout{% endblock navbar-dd-value3 %}
+
 {% block content %} 
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
 <link rel="stylesheet" href="{% static 'css/simpleManipulation.css' %}" />
- {% comment %} <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"> 
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"> 
   <ol class="carousel-indicators">
     <li
       data-target="#carouselExampleIndicators"
@@ -71,9 +80,10 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div> {% endcomment %}
+</div>
+<div class="container">
   {% comment %} <div class="myCard"> {% endcomment %}
-    {% comment %} <div class="row"> 
+    <div class="row"> 
       <div class="col-md-12">
         <div class="m_box_content">
           <h2 class="d-flex justify-content-center py-3">Event</h2>
@@ -130,9 +140,9 @@
             </div>
           </div>
         </div>
-      {% comment %} </div> 
-    </div>{% endcomment %}
-  </div>
+      </div> 
+    </div>
+  {% comment %} </div> {% endcomment %}
 </div>
 
 {% endblock content %} 

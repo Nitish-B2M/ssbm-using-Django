@@ -1,12 +1,90 @@
 {% extends 'navbar.html' %}
 {% load static %}
 {% block title %}Booking Page{% endblock title %}
-{% block main_page_link %}{{public}}{% endblock main_page_link %} 
-{% block main_page_link2 %}{{public}}{% endblock main_page_link2 %} 
+{% block main_page_link %}{% url 'managerMainPage' %}{% endblock main_page_link %} 
+{% block main_page_link2 %}{% url 'managerMainPage' %}{% endblock main_page_link2 %} 
 {% block navbar-right-box-link %}{{publicprofile}}{% endblock navbar-right-box-link %} 
-{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
+{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %}  
+{% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
 
+<div class="container-fluid">
+    <div class="container py-5">
+        <div class="row p-3">
+            {% for e in bseat %}
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="background-color:{{boxcolor.1}}">
+                        <div class="col p-3 d-flex flex-column position-static">
+                            <h2 class="text-primary"><span class="fs-3">Name:</span> {{e.ename}}</h2>
+                            <h4 class="mb-0"><span class="fs-5">Venue: {{e.evenue}}</span></h4>
+                            <div class="mb-1 text-light-gray"><span class="fs-6 fw-bold text-danger">Date:</span> {{e.edate}}</div>
+                            <p class="card-text mb-auto"><span class="fs-6 fw-semibold text-danger">Desc: </span>{{e.edesc}}</p>
+                            <p class="card-text mb-auto">Total Seat : <strong>{% widthratio e.ecol 1 e.ecol %}</strong></p>
+                            {% comment %} <a href="/public/userServices/bookYourSeat/" class="btn btn-outline-success">Book</a> {% endcomment %}
+                            <strong style="margin-left:auto"><a href="{% url 'bookYourSeat' e.ename %}" class="btn btn-info right">Book</a></strong>
+                        </div>
+                        <div class="col-auto p-0">
+                            {% comment %} <img src="https://picsum.photos/300/250" alt="image"> {% endcomment %}
+                            {% comment %} <img src="https://source.unsplash.com/300x250/?stadium" alt="image"> {% endcomment %}
+                            <img src="{{img}}" alt="image">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock content %}
+{% block footer %}{% endblock footer %}
+
+
+
+{% comment %} <div class="container py-5">
+    {% for n in bseat %}
+    <div class="row p-4" style="border:1px solid crimson;">
+        <div class="col-md-2">
+            <div class="about">
+                <h1>Book your tickets here</h1>
+                <p>Book your tickets here</p>
+            </div>
+        </div>
+        <div class="col-md-10">
+                store i.ecol value in variable
+                {% for j in bseat %}
+                    {% if i.ecol == j.ecol %}
+                         if i.ecol == j.ecol then store j.seat value in variable 
+                        {% if j.seat == 1 %}
+                            <button class="btn btn-success" disabled>1</button>
+                        {% else %}
+                            <button class="btn btn-danger" disabled>1</button>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %} {% endcomment %}
+
+                {% comment %} store context value with func {% endcomment %}
+                {% comment %} {% for j in n.ecol %}
+                    {% if n.erow == 1 %}
+                        <button class="btn btn-success" disabled>1</button>
+                    {% else %}
+                        <button class="btn btn-danger" disabled>1</button>
+                    {% endif %}
+                {% comment %} {% endfor %} 
+ 
+                {% for i in n.ecol %}
+                    <div class="row">
+                        {% for j in n.erow %}
+                            <div class="col">
+                                <div class="seat">
+                                    <input type="checkbox" name="seat" value="seat_{{i}}_{{j}}">
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %} 
+            </div>
+        </div>
+    </div> 
+    {% endfor %}{% endcomment %}  
