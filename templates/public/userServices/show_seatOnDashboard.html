@@ -1,7 +1,7 @@
 {% extends 'navbar.html' %}
 {% load static %} 
 
-{% block title %}Book Your Seat{%endblock title %} 
+{% block title %}Seat Dashboard{%endblock title %} 
 
 {% block main_page_link %}{% url 'userMainPage' %}{% endblock main_page_link %} 
 {% block main_page_link2 %}{% url 'userMainPage'%}{% endblock main_page_link2 %} 
@@ -39,7 +39,6 @@
                 <h3></h3>
                 <h4>Venue: {{bseat.evenue}}</h4>
                 <h5>Price: &nbsp;₹ &nbsp;&nbsp;<span class="fs-5 text-danger">{{bseat.seatprice}}</span>/<span class="fs-6 text-secondary">seat</span></h5>
-                <p>Book your tickets here</p>
             </div>
         </div>
         <div class="col">
@@ -50,8 +49,6 @@
     </div>
     <div class="row p-4" style="border:1px solid crimson;">
         <div class="col">
-            <form class="form-horizontal" method="post" action="{% url 'bookYourSeat2' ename %}">
-                {% csrf_token %}
                 <div class="row">
                     <div class="col"></div>
                     {% for j in bseat.ecol %}
@@ -75,30 +72,29 @@
                         {% if i.seatstatus %}
                             <div class="col">
                                 <div class="ui disabled checkbox">
-                                    <input type="checkbox" name="sseat" value="{{i.seatname}}" disabled="disabled" autocomplte="off">
+                                    <input type="checkbox" name="sseat" value="{{i.seatname}}" autocomplte="off" checked  onclick="return false;" onkeydown="return false;">
                                 </div>
                             </div>
                         {% else %}
                             <div class="col">
                                 <div class="seat">
-                                    <input type="checkbox" name="sseat" value="{{i.seatname}}" style="cursor:pointer;" autocomplte="off">
+                                    <input type="checkbox" name="sseat" value="{{i.seatname}}" disabled="disabled" style="cursor:pointer;" autocomplte="off">
                                 </div>
                             </div>
                         {% endif %}
                     {% endfor %}
                 </div>
                 <div class="row pt-3 d-flex align-items-center">
-                    <div class="col-1 fs-5">
-                        Price :
+                    <div class="col-2">
+                        <strong class="fs-5">Total Price :</strong>
                     </div>
                     <div class="totalPrice col-2" value="" >
-                        0 Rs.
+                       <span class="text-danger fw-semibold fs-5">  ₹ &nbsp;&nbsp;{{getprice}} /-</span>
                     </div>
                     <div class="col-2">
-                        <input type="submit" value="Book" class="btn btn-primary">
+                        <strong style="margin-left:auto"><a href="{% url 'bookYourSeat2' ename %}" class="btn btn-info right">Book More</a></strong>
                     </div>
                 </div>                    
-            </form>
         </div>
     </div>
     {% comment %} {% endif %} {% endcomment %}
@@ -114,26 +110,6 @@
     {% endif %}
 </div> 
 </div> 
-<script>
-    var elements = document.getElementsByTagName("INPUT");
-    for (var inp of elements) {
-        if (inp.type === "checkbox")
-            inp.checked = false;
-    }
-    let values =  0;
-    $('input[type="checkbox"]').click(function(){
-        if ($(this).prop("checked")){
-            values = values + {{bseat.seatprice}};
-            $('.totalPrice').text(values + " Rs.");
-            document.getElementsByClassName("totalPrice")[0].setAttribute("value", values);
-        }
-        else if(!$(this).prop("checked")){
-            values = values - {{bseat.seatprice}};
-            $('.totalPrice').text(values + " Rs.");
-            document.getElementsByClassName("totalPrice")[0].setAttribute("value", values);
-        }
-    });
-</script>
 {% endblock content %}
 
 

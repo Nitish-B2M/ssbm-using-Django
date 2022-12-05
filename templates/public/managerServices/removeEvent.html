@@ -12,14 +12,21 @@
 {% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
 {% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
 
+{% block navbar-dd-link1 %}/public/managerProfile/{% endblock navbar-dd-link1 %}
+{% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
+
+{% block navbar-dd-link2 %}/public/managerProfile/{% endblock navbar-dd-link2 %}
+{% block navbar-dd-value2 %}Dashboard{% endblock navbar-dd-value2 %}
+
 {% block navbar-dd-link3 %}/logout/{% endblock navbar-dd-link3 %}
-{% block navbar-dd-value3 %}logout{% endblock navbar-dd-value3 %}
+{% block navbar-dd-value3 %}Logout{% endblock navbar-dd-value3 %}
 
 {% block content %} 
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <link rel="stylesheet" href="{% static 'css/simpleManipulation.css' %}" />
 <link rel="stylesheet" href="{% static 'css/event.css' %}" />
 
+<div class="container-fluid" style="background:#D1EDF2;">
 <div class="container">
     {% comment %} create table {% endcomment %}
     <div class="row py-5">
@@ -40,19 +47,31 @@
                                 <th>Event Type</th>
                                 <th>Event Status</th>
                                 <th>Remove</th>
-                            </tr>
+                            </trd-flex>
                         </thead>
                         <tbody>
                             {% for event in eventdata %}
-                            <tr>
-                                <td>{{event.ename}}</td>
-                                <td>{{event.edate}}</td>
-                                <td>{{event.estarttime}}</td>
-                                <td>{{event.eendtime}}</td>
-                                <td>{{event.evenue}}</td>
-                                <td>{{event.edesc}}</td>
-                                <td>{{event.eorganization}}</td>
-                                <td><a href="{% url 'removeEvent2' event.ename %}"><button class="btn btn-danger">Remove</button></a></td>
+                            <tr style="background:#B1C1C4;" class="text-primary">
+                                <td class="fs-6 fw-medium text-primary editable" data-type="name" data-id="{{event.id}}">{{event.ename}}</td>
+                                <td class="fs-6 fw-medium text-primary editable" data-type="date" data-id="{{event.id}}">{{event.edate}}</td>
+                                <td class="fs-6 fw-medium text-primary editable" data-type="starttime" data-id="{{event.id}}">{{event.estarttime}}</td>
+                                <td class="fs-6 fw-medium text-primary editable" data-type="endtime" data-id="{{event.id}}">{{event.eendtime}}</td>
+                                <td class="fs-6 fw-medium text-primary editable" data-type="venue" data-id="{{event.id}}">{{event.evenue}}</td>
+                                <td class="fs-6 fw-medium text-primary editable" data-type="description" data-id="{{event.id}}">{{event.edesc}}</td>
+                                <td class="fs-6 fw-medium text-primary editable" data-type="organization" data-id="{{event.id}}">{{event.eorganization}}</td>
+                                {% comment %} <td><a href="{% url 'removeEvent2' event.ename %}"><button class="btn btn-danger">Remove</button></a></td> {% endcomment %}
+                                <form action="{% url 'removeEvent2' event.ename %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="ename" value="{{event.ename}}">
+                                    <input type="hidden" name="edate" value="{{event.edate}}">
+                                    <input type="hidden" name="estarttime" value="{{event.estarttime}}">
+                                    <input type="hidden" name="eendtime" value="{{event.eendtime}}">
+                                    <input type="hidden" name="evenue" value="{{event.evenue}}">
+                                    <input type="hidden" name="edesc" value="{{event.edesc}}">
+                                    <input type="hidden" name="eorganization" value="{{event.eorganization}}">
+                                    <input type="hidden" name="estatus" value="{{event.estatus}}">
+                                    <td><button class="btn btn-danger">Remove</button></td>
+                                </form>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -62,7 +81,7 @@
         </div>
     </div>
 </div>
-
+</div>
 {% endblock content %}
 {% block footer %}{% endblock footer %}
 

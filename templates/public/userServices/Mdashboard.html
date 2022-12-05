@@ -1,7 +1,7 @@
 {% extends 'navbar.html' %}
 {% load static %} 
 
-{% block title %}Show Event{%endblock title %} 
+{% block title %}User Main Dashboard{%endblock title %} 
 
 {% block main_page_link %}{% url 'userMainPage' %}{% endblock main_page_link %} 
 {% block main_page_link2 %}{% url 'userMainPage'%}{% endblock main_page_link2 %} 
@@ -23,14 +23,15 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-<link rel="stylesheet" href="{% static 'css/about.css' %}">
-
-<div class="container-fluid" style="background:#C0C0C0;">
-    <div class="container py-5">
-        {% if bseat %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    
+<div class="container-fluid" style="background:#FEF250;">
+    <div class="container">
+        <h2 class="text-center pt-3" style="color:#006A4E;">Booked Events Status</h2>
+        {% if eventrecord %}
             <div class="row p-3">
-            {% for e in bseat %}
-                <div class="col-md-6" style="max-width: 48%;margin-left: 15px;">
+            {% for e in eventrecord %}
+                <div class="col-md-6" style="max-width: 48%;margin-left: 15px; background:#CCCCFF;">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="background-color:{{boxcolor.1}}">
                         <div class="col p-3 d-flex flex-column position-static">
                             <h2 class="text-primary"><span class="fs-4">Name:</span> {{e.ename}}</h2>
@@ -38,11 +39,9 @@
                             <div class="mb-1 text-light-gray"><span class="fs-6 fw-bold text-danger">Date:</span> {{e.edate}}</div>
                             <p class="card-text mb-auto"><span class="fs-6 fw-semibold text-danger">Desc: </span>{{e.edesc}}</p>
                             <p class="card-text mb-auto">Total Seat : <strong>{% widthratio e.ecol 1 e.ecol %}</strong></p>
-                            <strong style="margin-left:auto"><a href="{% url 'bookYourSeat' e.ename %}" class="btn btn-info right">Book</a></strong>
+                            <strong style="margin-left:auto"><a href="{% url 'u_mdashboard2' e.ename %}" class="btn btn-info right">View Status</a></strong>
                         </div>
                         <div class="col-auto p-0">
-                            {% comment %} <img src="https://picsum.photos/300/250" alt="image"> {% endcomment %}
-                            {% comment %} <img src="https://source.unsplash.com/300x250/?stadium" alt="image"> {% endcomment %}
                             <img src="{{img}}" alt="image">
                         </div>
                     </div>
@@ -69,4 +68,3 @@
     </div>
 </div>
 {% endblock content %}
-{% block footer %}{% endblock footer %}

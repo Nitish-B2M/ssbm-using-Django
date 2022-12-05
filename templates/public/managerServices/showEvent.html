@@ -1,50 +1,78 @@
 {% extends 'navbar.html' %}
 {% load static %} 
+
 {% block title %}Show Event{%endblock title %} 
+
 {% block main_page_link %}{% url 'managerMainPage' %}{% endblock main_page_link %} 
 {% block main_page_link2 %}{% url 'managerMainPage'%}{% endblock main_page_link2 %} 
+
 {% block navbar-right-box-link %}{% url 'managerProfile' %}{% endblock navbar-right-box-link %} 
 {% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
+
 {% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
 {% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
+
+{% block navbar-dd-link1 %}/public/managerProfile/{% endblock navbar-dd-link1 %}
+{% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
+
+{% block navbar-dd-link2 %}/public/managerProfile/{% endblock navbar-dd-link2 %}
+{% block navbar-dd-value2 %}Dashboard{% endblock navbar-dd-value2 %}
+
+{% block navbar-dd-link3 %}/logout/{% endblock navbar-dd-link3 %}
+{% block navbar-dd-value3 %}Logout{% endblock navbar-dd-value3 %}
+
 {% block content %} 
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <link rel="stylesheet" href="{% static 'css/simpleManipulation.css' %}" />
-<link rel="stylesheet" href="{% static 'css/event.css' %}" />
 
-<div class="container">
-    <div class="row">
-    {% for e in event %}
-        {% comment %} create variable in python {% endcomment %}
-        {% comment %} {% with event_id=0 %}
-        {% if event_id == 1%}
-            {% with event_id=0 %}
-        {% endif %}
-            {% with event_id=event_id+1 %}
-            {{event_id}}
-        {% endwith %} {% endcomment %}
-        <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <h2><strong class="d-inline-block mb-2 text-primary">{{e.ename}}</strong></h2>
-                    <h3 class="mb-0">{{e.evenue}}</h3>
-                    <div class="mb-1 text-muted">{{e.edate}}</div>
-                    <p class="card-text mb-auto">{{e.edesc}}</p>
-                    {{e.ecol}}*{{e.erow}} 
-                    <a href="#" class="m-btn">Book</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    {% comment %} <img src="https://picsum.photos/300/250" alt="image"> {% endcomment %}
-                    {% comment %} <img src="https://source.unsplash.com/300x250/?stadium" alt="image"> {% endcomment %}
-                    <img src="" alt="image">
-                    {% comment %} <svg class="bd-placeholder-img" width="400" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> {% endcomment %}
+<div class="container-fluid" style="background:#F1CBBB;">
+    <div class="container">
+        {% if event %}
+            <div class="row pb-1 pt-5 pl-5 pr-5">
+            {% for e in event %}
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="background-color:#DEE6AC;">
+                    <div class="col p-3 d-flex flex-column position-static">
+                        <h2 class="text-primary"><span class="fs-4">Name:</span> {{e.ename}}</h2>
+                        <h4 class="mb-0"><span class="fs-5">Venue: {{e.evenue}}</span></h4>
+                        <div class="mb-1 text-light-gray"><span class="fs-6 fw-bold text-danger">Date:</span> {{e.edate}}</div>
+                        <p class="card-text mb-auto"><span class="fs-6 fw-semibold text-danger">Desc: </span>{{e.edesc}}</p>
+                        <p class="card-text mb-auto">Total Seat : <strong>{% widthratio e.ecol 1 e.ecol %}</strong></p>
+                    </div>
+                    <div class="col-auto p-0">
+                        {% comment %} <img src="https://picsum.photos/300/250" alt="image"> {% endcomment %}
+                        {% comment %} <img src="https://source.unsplash.com/300x250/?stadium" alt="image"> {% endcomment %}
+                        <img src="{{img}}" alt="image">
+                    </div>
                 </div>
             </div>
-        </div>
-    {% comment %} assi it gn{% endcomment %}
-    {% comment %} {% with event_id=1 %}
-    {% endwith %} {% endcomment %}
-    {% endfor %}
+            {% endfor %}
+            </div>
+            
+            <div class="row pl-4">
+                <div class="col-auto p-4">
+                    <a href="{% url 'managerMainPage' %}" class="btn btn-info right">Back</a>
+                    <a href="{% url 'addEvent' %}" class="btn btn-success right">Add Event</a>
+                </div>
+            </div>
+
+        {% else %}
+            <div class="row p-5">
+                <div class="col-md-12">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="background-color:{{boxcolor.1}}">
+                        <div class="col p-3 d-flex flex-column position-static">
+                            <h2 class="text-primary"><span class="fs-4">No Event Found</span></h2>
+                        </div>
+                    </div>
+                    <div class="row p-0">
+                        <div class="col-auto p-0">
+                            <a href="{% url 'managerMainPage' %}" class="btn btn-info right">Back</a>
+                            <a href="{% url 'addEvent' %}" class="btn btn-success right">Add Event</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

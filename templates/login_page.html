@@ -1,8 +1,17 @@
 {% extends 'navbar.html' %}
 {% load static %}
+
 {% block title %}Login{% endblock title %}
+
 {% block navbar-right-box-value %}SignUp{% endblock navbar-right-box-value %}
 {% block navbar-right-box-link %}{% url 'signup' %}{% endblock navbar-right-box-link %}
+
+{% block navbar_op2_link %}/signup/{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Signup{% endblock navbar_op2_value %}
+
+{% block navbar-dd-link2 %}/resetPassword/{% endblock navbar-dd-link2 %}
+{% block navbar-dd-value2 %}Reset Password{% endblock navbar-dd-value2 %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">
@@ -33,7 +42,7 @@
                     <div class="invalid-feedback">{{error}}</div>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="LOGIN ACCOUNT" class="m-btn">
+                    <input type="submit" value="LOGIN ACCOUNT" id="submit" class="m-btn">
                   </div>
                 </form>
               </div>

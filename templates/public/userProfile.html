@@ -1,21 +1,63 @@
 {% extends 'navbar.html' %}
-{% load static %}
-{% block title %}Profile{% endblock title %}
-{% with "user" as profile  %} 
-{% if public == 'user' %}
-{% block main_page_link %}{% url 'userMainPage' %}{% endblock main_page_link %}
-{% block main_page_link2 %}{% url 'userMainPage' %}{% endblock main_page_link2 %}
-{% else %}
-{% comment %} {% block main_page_link %}{% url 'adminMainPage' %}{% endblock main_page_link %}
-{% block main_page_link2 %}{% url 'adminMainPage' %}{% endblock main_page_link2 %} {% endcomment %}
-{% endif %}{% endwith %}
-{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %}
-{% block navbar-right-box-link %}{% url 'userProfile' %}{% endblock navbar-right-box-link %}
+{% load static %} 
+
+{% block title %}User Profile{%endblock title %} 
+
+{% block main_page_link %}{% url 'userMainPage' %}{% endblock main_page_link %} 
+{% block main_page_link2 %}{% url 'userMainPage'%}{% endblock main_page_link2 %} 
+
+{% block navbar-right-box-link %}{% url 'userProfile' %}{% endblock navbar-right-box-link %} 
+{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
+
+{% block navbar_op2_link %}/booking/{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Booking{% endblock navbar_op2_value %}
+
+{% block navbar-dd-link1 %}/public/userProfile/{% endblock navbar-dd-link1 %}
+{% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
+
+{% block navbar-dd-link2 %}/public/userServices/u_mdashboard/{% endblock navbar-dd-link2 %}
+{% block navbar-dd-value2 %}Dashboard{% endblock navbar-dd-value2 %}
+
+{% block navbar-dd-link3 %}/logout/{% endblock navbar-dd-link3 %}
+{% block navbar-dd-value3 %}Logout{% endblock navbar-dd-value3 %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 
-{% comment %} access request session name {% endcomment %}
+<div class="container-fluid" style="background:#B0DFAF;">
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div class="panel-body" id="sec1">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label style="letter-spacing:1px;font-size:16px;color:crimson;" for="username">Username</label>
+                                <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="{{user.name}}" disabled>
+                                <a href="{% url 'removeEvent' %}"><button class="btn btn-info">Edit</button></a>
+                            </div>
+                            <div class="form-group">
+                                <label style="letter-spacing:1px;font-size:16px;color:crimson;" for="email">Email</label>
+                                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="{{user.email}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label style="letter-spacing:1px;font-size:16px;color:crimson;" for="security">Security Key</label>
+                                <input type="text" name="security" id="security" tabindex="1" class="form-control" placeholder="Security Key" value="{{user.skey}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label style="letter-spacing:1px;font-size:16px;color:crimson;" for="customer_fields">Profile</label>
+                                <input type="text" name="customer_fields" id="customer_fields" tabindex="1" class="form-control" placeholder="Profile" value="{{user.customer_fields}}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
 {% endblock content %}
 {% block footer %}{% endblock footer %}

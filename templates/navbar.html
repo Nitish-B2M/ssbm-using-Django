@@ -32,6 +32,12 @@
     />
     <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
     {% block head-link %}{% endblock head-link %}
+    <style>
+      .dropdown-menu a:hover {
+        background-color: #B8D1CB !important;
+        opacity: 1 !important;
+      }
+    </style>
     <title>{% block title %}{% endblock title %} | SSBM</title>
   </head>
   <body>
@@ -64,9 +70,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="{% block navbar_op2_link %}{% endblock navbar_op2_link %}">{% block navbar_op2_value %}{% endblock navbar_op2_value %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/booking">Booking</a>
             </li>
             {% comment %} <li class="nav-item">
               <a class="nav-link text-white" href="/more">More</a>

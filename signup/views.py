@@ -54,17 +54,8 @@ def signupaction(request):
             return render(request, 'signup_page.html', {'error14': 'Email must be valid','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
         elif len(dskey) < 4 or len(dskey) > 8:
             return render(request, 'signup_page.html', {'error23': 'Key must be length of 4 to 8','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
-        # elif dname.startswith(dname.index(0).isnumeric()):
-        #     return render(request, 'signup_page.html', {'error15': 'Name must be start with alphabet','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
-        # elif dpassword.startswith(dpassword.index(0).isnumeric()):
-        #     return render(request, 'signup_page.html', {'error16': 'Password must be start with alphabet','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword})
-        # elif demail.startswith(demail.index(0).isnumeric()):
-        #     return render(request, 'signup_page.html', {'error17': 'Email must be start with alphabet','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword})
-        # password must contain some basic format
         elif dpassword.isalnum():
             return render(request, 'signup_page.html', {'error18': 'Password must contain some special characters','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
-        # elif dpassword.islower():
-        #     return render(request, 'signup_page.html', {'error19': 'Password must contain some upper case characters','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword})
         elif dpassword.isalpha():
             return render(request, 'signup_page.html', {'error20': 'Password must contain some lower case or upper case characters','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
         elif dpassword.isspace():
@@ -77,21 +68,42 @@ def signupaction(request):
                 database = 'ssbm_db'
             )
             cursor = db.cursor()
-            cursor.execute('SELECT * FROM signup_db WHERE email = %s', (demail,))
-            data = cursor.fetchall()
-            if len(data) > 0:
-                return render(request, 'signup_page.html', {'error22': 'Email already exists','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
+            cursor.execute("show tables")
+            tables = cursor.fetchall()
+            if ('signup_db',) in tables:
+                cursor.execute('SELECT * FROM signup_db WHERE email = %s', (demail,))
+                data = cursor.fetchall()
+                if len(data) > 0:
+                    return render(request, 'signup_page.html', {'error22': 'Email already exists','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
+                else:
+                    db = mysql.connect(
+                        host = "localhost",
+                        user = "root",
+                        passwd = "root",
+                        database = "ssbm_db"
+                    )
+                    cursor = db.cursor()
+                    cursor.execute("INSERT INTO signup_db(name, email, password, repassword, customer_fields, skey) VALUES(%s, %s, %s, %s, %s, %s)", (dname, demail, dpassword, drepassword, dradio, dskey))
+                    db.commit()
+                    return render(request, 'prompt_message.html', {'message': 'User created successfully'})
             else:
-                db = mysql.connect(
-                    host = "localhost",
-                    user = "root",
-                    passwd = "root",
-                    database = "ssbm_db"
-                )
+                cursor.execute("create table signup_db(id int not nul primary key, name varchar(45), email varchar(45), password varchar(16), repassword varchar(16), customer_fields varchar(20), skey varchar(20))")
+                cursor.execute('SELECT * FROM signup_db WHERE email = %s', (demail,))
+                data = cursor.fetchall()
+                if len(data) > 0:
+                    return render(request, 'signup_page.html', {'error22': 'Email already exists','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
+                else:
+                    db = mysql.connect(
+                        host = "localhost",
+                        user = "root",
+                        passwd = "root",
+                        database = "ssbm_db"
+                    )
                 cursor = db.cursor()
                 cursor.execute("INSERT INTO signup_db(name, email, password, repassword, customer_fields, skey) VALUES(%s, %s, %s, %s, %s, %s)", (dname, demail, dpassword, drepassword, dradio, dskey))
                 db.commit()
                 return render(request, 'prompt_message.html', {'message': 'User created successfully'})
+            
     else:
         return render(request, 'signup_page.html', {'message': 'Please fill the form'})
 

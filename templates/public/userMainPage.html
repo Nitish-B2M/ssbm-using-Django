@@ -1,11 +1,26 @@
 {% extends 'navbar.html' %}
-{% load static %}
-{% block title %}User Home{% endblock title %}
-{% block main_page_link %}{% url 'userMainPage' %}{% endblock main_page_link %}
-{% block main_page_link2 %}{% url 'userMainPage' %}{% endblock main_page_link2 %}
-{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %}
-{% comment %} {% block navbar-right-box-link %}{% url 'userProfile'  %}{% endblock navbar-right-box-link %} {% endcomment %}
-{% block navbar-right-box-link %}{% url 'userProfile'%}{% endblock navbar-right-box-link %}
+{% load static %} 
+
+{% block title %}User Main-Page{%endblock title %} 
+
+{% block main_page_link %}{% url 'userMainPage' %}{% endblock main_page_link %} 
+{% block main_page_link2 %}{% url 'userMainPage'%}{% endblock main_page_link2 %} 
+
+{% block navbar-right-box-link %}{% url 'userProfile' %}{% endblock navbar-right-box-link %} 
+{% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
+
+{% block navbar_op2_link %}/booking/{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Booking{% endblock navbar_op2_value %}
+
+{% block navbar-dd-link1 %}/public/userProfile/{% endblock navbar-dd-link1 %}
+{% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
+
+{% block navbar-dd-link2 %}/public/userServices/u_mdashboard/{% endblock navbar-dd-link2 %}
+{% block navbar-dd-value2 %}Dashboard{% endblock navbar-dd-value2 %}
+
+{% block navbar-dd-link3 %}/logout/{% endblock navbar-dd-link3 %}
+{% block navbar-dd-value3 %}Logout{% endblock navbar-dd-value3 %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">

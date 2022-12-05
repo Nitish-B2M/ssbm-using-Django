@@ -1,6 +1,22 @@
 
-{% extends 'navbar.html' %} {% load static %} {% block title %}Home{% endblock title %} {% block navbar_op2_link %}/signup{% endblock navbar_op2_link %}
-{% block navbar_op2_value %}Signup{% endblock navbar_op2_value %}{% block navbar-right-box-value %}Login{%endblock navbar-right-box-value %} {% block navbar-right-box-link %}{% url 'login'%}{%endblock navbar-right-box-link %} {% block content %}
+{% extends 'navbar.html' %} 
+{% load static %} 
+
+{% block title %}Home{% endblock title %}}
+
+{% block navbar-right-box-value %}Login{%endblock navbar-right-box-value %}
+{% block navbar-right-box-link %}{% url 'login'%}{%endblock navbar-right-box-link %}
+
+{% block navbar_op2_link %}/signup/{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Signup{% endblock navbar_op2_value %}
+
+{% block navbar-dd-link1 %}/signup/{% endblock navbar-dd-link1 %}
+{% block navbar-dd-value1 %}Signup{% endblock navbar-dd-value1 %}
+
+{% block navbar-dd-link2 %}/resetPassword/{% endblock navbar-dd-link2 %}
+{% block navbar-dd-value2 %}Reset Password{% endblock navbar-dd-value2 %}
+
+{% block content %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
