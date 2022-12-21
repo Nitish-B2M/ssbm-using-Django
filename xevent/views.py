@@ -83,8 +83,8 @@ def addEvent(request):
 
                     cursor.execute("INSERT INTO event_record(id,ename, eorganization, edate, evenue, estarttime, eendtime, edesc, ecol, erow, seatprice) VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (bid,bname, borgname, bdate, bvenue, bstime, betime, bdescription, bcol, brow, bprice))
                     counter = 1
-                    for i in range(1,int(bcol)+1):
-                        for j in range(1,int(brow)+1):
+                    for i in range(1,int(brow)+1):
+                        for j in range(1,int(bcol)+1):
                             seatname="s"+str(i)+"_"+str(j)
                             cursor.execute("INSERT INTO event_seatRecord (seatname, seatstatus, no_row, no_col, row_count, eventname) VALUES (%s, %s, %s, %s, %s, %s)", (seatname,0,brow,bcol,counter,bname))
                         counter = counter + 1
@@ -141,7 +141,6 @@ def bookSeat(request,passvalue):
                 for j in seatdata:
                     if j.eventname == passvalue:
                         l1.append(j)
-                print(i)
                 return render(request,'public/userServices/bookSeat.html',{'bseat':i,'name':name,'page':'page_exist','ename':ename,'seatdata':l1,'img':"https://source.unsplash.com/250x250/?stadium"})
             else:
                 pass
@@ -161,6 +160,7 @@ def bookSeat2(request,passvalue):
             for i in bseat:
                 sseat.append(i)
         snoseat = len(sseat)
+        print(snoseat,sseat)
         if name == ' ' or email == ' ' or sseat == ' ' or snoseat == ' ':
             return render(request,'/public/userServices/bookSeat.html',{'error1':'Please fill all the fields'})
         else:
@@ -177,13 +177,16 @@ def bookSeat2(request,passvalue):
                 seatprice = event[10]
                 stotalprice = snoseat * seatprice
                 str_seat = ','.join(sseat)
+                print(str_seat,sseat)
                 cursor.execute("INSERT INTO event_seat_UserBooking (username, useremail, userseat, no_seat, seattotalprice, eventname) VALUES (%s, %s, %s, %s, %s, %s)", (name, email, str_seat, snoseat, stotalprice, passvalue))
                 for i in sseat:
-                    cursor.execute("SELECT * FROM event_seatRecord WHERE seatname = %s", (i,))
+                    cursor.execute("SELECT * FROM event_seatRecord WHERE seatname = %s and eventname = %s", (i,passvalue,) )
                     seat = cursor.fetchone()
+                    print(seat)
                     if seat:
                         if seat[2] == 0:
-                            cursor.execute("UPDATE event_seatRecord SET seatstatus = 1 WHERE seatname = %s", (i,))
+                            print(seat[2])
+                            cursor.execute("UPDATE event_seatRecord SET seatstatus = 1 WHERE seatname = %s and eventname = %s", (i,passvalue,))
                             db.commit()
                         else:
                             pass

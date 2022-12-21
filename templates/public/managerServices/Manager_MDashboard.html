@@ -1,36 +1,38 @@
-{% extends 'navbar.html' %}
+{% extends 'navbar.html' %} 
 {% load static %} 
 
-{% block title %}Show Event{%endblock title %} 
+{% block title %}Manager Home{%endblock title %} 
 
-{% block main_page_link %}{% url 'userMainPage' %}{% endblock main_page_link %} 
-{% block main_page_link2 %}{% url 'userMainPage'%}{% endblock main_page_link2 %} 
+{% block main_page_link %}{% url 'managerMainPage' %}{% endblock main_page_link %} 
+{% block main_page_link2 %}{% url 'managerMainPage'%}{% endblock main_page_link2 %} 
 
-{% block navbar-right-box-link %}{% url 'userProfile' %}{% endblock navbar-right-box-link %} 
+{% block navbar-right-box-link %}{% url 'managerProfile' %}{% endblock navbar-right-box-link %} 
 {% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
 
-{% block navbar_op2_link %}/booking/{% endblock navbar_op2_link %}
-{% block navbar_op2_value %}Booking{% endblock navbar_op2_value %}
+{% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
+{% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
 
-{% block navbar-dd-link1 %}/public/userProfile/{% endblock navbar-dd-link1 %}
+{% block navbar-dd-link1 %}/public/managerProfile/{% endblock navbar-dd-link1 %}
 {% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
 
-{% block navbar-dd-link2 %}/public/userServices/u_mdashboard/{% endblock navbar-dd-link2 %}
+{% block navbar-dd-link2 %}/public/managerServices/manager_mdashboard/{% endblock navbar-dd-link2 %}
 {% block navbar-dd-value2 %}Dashboard{% endblock navbar-dd-value2 %}
 
 {% block navbar-dd-link3 %}/logout/{% endblock navbar-dd-link3 %}
 {% block navbar-dd-value3 %}Logout{% endblock navbar-dd-value3 %}
 
-{% block content %}
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-<link rel="stylesheet" href="{% static 'css/about.css' %}">
-
-<div class="container-fluid" style="background:#C0C0C0;">
-    <div class="container py-5">
-        {% if bseat %}
+{% block content %} 
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+<link rel="stylesheet" href="{% static 'css/simpleManipulation.css' %}" />
+    
+<div class="container-fluid" style="background:#FEF250;">
+    <div class="container">
+        <h2 class="text-center pt-3" style="color:#006A4E;">All Events Lists</h2>
+        {% if page_exist %}
             <div class="row p-3">
-            {% for e in bseat %}
-                <div class="col-md-6" style="max-width: 48%;margin-left: 15px;">
+            {% for e in eventrecord %}
+                <div class="col-md-6" style="max-width: 48%;margin-left: 15px; background:#CCCCFF;">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="background-color:{{boxcolor.1}}">
                         <div class="col p-3 d-flex flex-column position-static">
                             <h2 class="text-primary"><span class="fs-4">Name:</span> {{e.ename}}</h2>
@@ -38,11 +40,9 @@
                             <div class="mb-1 text-light-gray"><span class="fs-6 fw-bold text-danger">Date:</span> {{e.edate}}</div>
                             <p class="card-text mb-auto"><span class="fs-6 fw-semibold text-danger">Desc: </span>{{e.edesc}}</p>
                             <p class="card-text mb-auto">Total Seat : <strong>{% widthratio e.ecol 1 e.erow %}</strong></p>
-                            <strong style="margin-left:auto"><a href="{% url 'bookYourSeat' e.ename %}" class="btn btn-info right">Book</a></strong>
+                            <strong style="margin-left:auto"><a href="#" class="btn btn-info right">View Status</a></strong>
                         </div>
                         <div class="col-auto p-0">
-                            {% comment %} <img src="https://picsum.photos/300/250" alt="image"> {% endcomment %}
-                            {% comment %} <img src="https://source.unsplash.com/300x250/?stadium" alt="image"> {% endcomment %}
                             <img src="{{img}}" alt="image">
                         </div>
                     </div>
@@ -57,16 +57,9 @@
                             <h2 class="text-primary"><span class="fs-4">No Event Found</span></h2>
                         </div>
                     </div>
-                    {% comment %} <div class="row p-0">
-                        <div class="col-auto p-0">
-                            <a href="{% url 'managerMainPage' %}" class="btn btn-info right">Back</a>
-                            <a href="{% url 'addEvent' %}" class="btn btn-success right">Add Event</a>
-                        </div>
-                    </div> {% endcomment %}
                 </div>
             </div>
         {% endif %}
     </div>
 </div>
 {% endblock content %}
-{% block footer %}{% endblock footer %}

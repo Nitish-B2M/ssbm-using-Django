@@ -6,7 +6,7 @@ from xevent.views import addEvent,showEvent,bookingSeat,bookSeat,bookSeat2,remov
 from django.urls import path
 from resetpass.views import resetpass
 from ssbm import views
-from dashboard.views import m_dashboard,m_dashboard2
+from dashboard.views import m_dashboard,m_dashboard2,manager_m_dashboard
 
 urlpatterns = [
     path("", views.index, name='index'),
@@ -29,6 +29,7 @@ urlpatterns = [
     path("public/userProfile/", views.userProfile, name='userProfile'),
     path("public/userServices/u_mdashboard/", m_dashboard, name='u_mdashboard'),
     path("public/userServices/show_seatOnDashboard/<passvalue>", m_dashboard2, name='u_mdashboard2'),
+    path("public/managerServices/manager_mdashboard/", manager_m_dashboard, name='manager_mdashboard'),
     path("public/userServices/bookYourSeat/<passvalue>", bookSeat, name="bookYourSeat"),
     path("public/userServices/bookYourSeat2/<passvalue>", bookSeat2, name="bookYourSeat2"),
     path("public/managerServices/managerMS/", views.managerMS, name="managerMS"),

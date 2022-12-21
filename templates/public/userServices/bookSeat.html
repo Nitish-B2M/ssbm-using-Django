@@ -97,6 +97,10 @@
                     <div class="col-2">
                         <input type="submit" value="Book" class="btn btn-primary">
                     </div>
+                    {% comment %} <div class="col-2 imp_msg">
+                        <p class="text-danger">*Select only 10 seats</p>
+                    </div> {% endcomment %}
+
                 </div>                    
             </form>
         </div>
@@ -121,6 +125,7 @@
             inp.checked = false;
     }
     let values =  0;
+    let seat_counter = 10;
     $('input[type="checkbox"]').click(function(){
         if ($(this).prop("checked")){
             values = values + {{bseat.seatprice}};
@@ -133,6 +138,8 @@
             document.getElementsByClassName("totalPrice")[0].setAttribute("value", values);
         }
     });
+    console.log(seat_counter);
+    console.log(values);
 </script>
 {% endblock content %}
 

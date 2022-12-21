@@ -28,7 +28,7 @@
 <div class="container-fluid" style="background:#FEF250;">
     <div class="container">
         <h2 class="text-center pt-3" style="color:#006A4E;">Booked Events Status</h2>
-        {% if eventrecord %}
+        {% if page_exist %}
             <div class="row p-3">
             {% for e in eventrecord %}
                 <div class="col-md-6" style="max-width: 48%;margin-left: 15px; background:#CCCCFF;">
@@ -38,7 +38,7 @@
                             <h4 class="mb-0"><span class="fs-5">Venue: {{e.evenue}}</span></h4>
                             <div class="mb-1 text-light-gray"><span class="fs-6 fw-bold text-danger">Date:</span> {{e.edate}}</div>
                             <p class="card-text mb-auto"><span class="fs-6 fw-semibold text-danger">Desc: </span>{{e.edesc}}</p>
-                            <p class="card-text mb-auto">Total Seat : <strong>{% widthratio e.ecol 1 e.ecol %}</strong></p>
+                            <p class="card-text mb-auto">Total Seat : <strong>{% widthratio e.ecol 1 e.erow %}</strong></p>
                             <strong style="margin-left:auto"><a href="{% url 'u_mdashboard2' e.ename %}" class="btn btn-info right">View Status</a></strong>
                         </div>
                         <div class="col-auto p-0">

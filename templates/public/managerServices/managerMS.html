@@ -1,7 +1,7 @@
-{% extends 'navbar.html' %}
+{% extends 'navbar.html' %} 
 {% load static %} 
 
-{% block title %}Manager Service{%endblock title %} 
+{% block title %}Manager Home{%endblock title %} 
 
 {% block main_page_link %}{% url 'managerMainPage' %}{% endblock main_page_link %} 
 {% block main_page_link2 %}{% url 'managerMainPage'%}{% endblock main_page_link2 %} 
@@ -15,13 +15,13 @@
 {% block navbar-dd-link1 %}/public/managerProfile/{% endblock navbar-dd-link1 %}
 {% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
 
-{% block navbar-dd-link2 %}/public/managerProfile/{% endblock navbar-dd-link2 %}
+{% block navbar-dd-link2 %}/public/managerServices/manager_mdashboard/{% endblock navbar-dd-link2 %}
 {% block navbar-dd-value2 %}Dashboard{% endblock navbar-dd-value2 %}
 
 {% block navbar-dd-link3 %}/logout/{% endblock navbar-dd-link3 %}
 {% block navbar-dd-value3 %}Logout{% endblock navbar-dd-value3 %}
 
-{% block content %}
+{% block content %} 
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
 <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
 <link rel="stylesheet" href="{% static 'css/simpleManipulation.css' %}" />

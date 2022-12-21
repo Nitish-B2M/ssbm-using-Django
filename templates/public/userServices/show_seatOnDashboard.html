@@ -30,20 +30,20 @@
 {% comment %} <link href="https://semantic-ui.com/dist/semantic.min.css" rel="stylesheet" /> {% endcomment %}
 <div class="container-fluid">
 <div class="container py-5">
-    {% if page %}
+
     <div class="row pt-4 pl-4 pb-1" style="border:1px solid crimson;">
         <div class="col">
             <div class="about">
-                <h1 class="text-primary">{{bseat.ename|upper}} [{{bseat.eorganization}}]</h1>
-                <h4>Timing: <span class="fs-5">{{bseat.edate}}</span> <span class="fs-6">{{bseat.estarttime}} to {{bseat.eendtime}}</span></h4>
+                <h1 class="text-primary">{{eventdata.ename}} [{{eventdata.eorganization}}]</h1>
+                <h4>Timing: <span class="fs-5">{{eventdata.edate}}</span> <span class="fs-6">{{eventdata.estarttime}} to {{eventdata.eendtime}}</span></h4>
                 <h3></h3>
-                <h4>Venue: {{bseat.evenue}}</h4>
-                <h5>Price: &nbsp;₹ &nbsp;&nbsp;<span class="fs-5 text-danger">{{bseat.seatprice}}</span>/<span class="fs-6 text-secondary">seat</span></h5>
+                <h4>Venue: {{eventdata.evenue}}</h4>
+                <h5>Price: &nbsp;₹ &nbsp;&nbsp;<span class="fs-5 text-danger">{{eventdata.seatprice}}</span>/<span class="fs-6 text-secondary">seat</span></h5>
             </div>
         </div>
         <div class="col">
             <div class="about">
-                {{bseat.edesc}}
+                {{eventdata.edesc}}
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
         <div class="col">
                 <div class="row">
                     <div class="col"></div>
-                    {% for j in bseat.ecol %}
+                    {% for j in eventdata.ecol %}
                         <div class="col">
                             {{j}}
                         </div>
@@ -69,10 +69,16 @@
                             </div>
                         </div>        
                         {% endif %}
-                        {% if i.seatstatus %}
+                        {% if i.seatstatus == 2 %}
                             <div class="col">
                                 <div class="ui disabled checkbox">
                                     <input type="checkbox" name="sseat" value="{{i.seatname}}" autocomplte="off" checked  onclick="return false;" onkeydown="return false;">
+                                </div>
+                            </div>
+                        {% elif i.seatstatus == 1 %}
+                            <div class="col">
+                                <div class="ui disabled checkbox">
+                                    <input type="checkbox" name="sseat" value="{{i.seatname}}" autocomplte="off" checked disabled>
                                 </div>
                             </div>
                         {% else %}
@@ -89,16 +95,15 @@
                         <strong class="fs-5">Total Price :</strong>
                     </div>
                     <div class="totalPrice col-2" value="" >
-                       <span class="text-danger fw-semibold fs-5">  ₹ &nbsp;&nbsp;{{getprice}} /-</span>
+                       <span class="text-danger fw-semibold fs-5">  ₹ &nbsp;&nbsp;{{userBookedRecord_price}} /-</span>
                     </div>
                     <div class="col-2">
-                        <strong style="margin-left:auto"><a href="{% url 'bookYourSeat2' ename %}" class="btn btn-info right">Book More</a></strong>
+                        {% comment %} <strong style="margin-left:auto"><a href="{% url 'bookYourSeat2' ename %}" class="btn btn-info right">Book More</a></strong> {% endcomment %}
                     </div>
                 </div>                    
         </div>
-    </div>
-    {% comment %} {% endif %} {% endcomment %}
-    {% else %}
+    </div> 
+{% comment %}     
     <div class="row ">
         <div class="col">
             <div class="about">
@@ -106,8 +111,8 @@
                 <p class="fs-5">Sorry, No seats available</p>
             </div>
         </div>
-    </div>
-    {% endif %}
+    </div> {% endcomment %}
+
 </div> 
 </div> 
 {% endblock content %}

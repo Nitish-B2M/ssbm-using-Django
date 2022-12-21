@@ -15,7 +15,7 @@
 {% block navbar-dd-link1 %}/public/managerProfile/{% endblock navbar-dd-link1 %}
 {% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
 
-{% block navbar-dd-link2 %}/public/managerProfile/{% endblock navbar-dd-link2 %}
+{% block navbar-dd-link2 %}/public/managerServices/manager_mdashboard/{% endblock navbar-dd-link2 %}
 {% block navbar-dd-value2 %}Dashboard{% endblock navbar-dd-value2 %}
 
 {% block navbar-dd-link3 %}/logout/{% endblock navbar-dd-link3 %}
@@ -37,7 +37,7 @@
                         <h4 class="mb-0"><span class="fs-5">Venue: {{e.evenue}}</span></h4>
                         <div class="mb-1 text-light-gray"><span class="fs-6 fw-bold text-danger">Date:</span> {{e.edate}}</div>
                         <p class="card-text mb-auto"><span class="fs-6 fw-semibold text-danger">Desc: </span>{{e.edesc}}</p>
-                        <p class="card-text mb-auto">Total Seat : <strong>{% widthratio e.ecol 1 e.ecol %}</strong></p>
+                        <p class="card-text mb-auto">Total Seat : <strong>{% widthratio e.ecol 1 e.erow %}</strong></p>
                     </div>
                     <div class="col-auto p-0">
                         {% comment %} <img src="https://picsum.photos/300/250" alt="image"> {% endcomment %}
