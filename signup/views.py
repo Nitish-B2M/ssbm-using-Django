@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import mysql.connector as mysql
+from .models import userData
 dname = ''
 demail = ''
 dpassword = ''
@@ -61,69 +61,12 @@ def signupaction(request):
         elif dpassword.isspace():
             return render(request, 'signup_page.html', {'error21': 'Password must not contain any space','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
         else:
-            db = mysql.connect(
-                host = 'localhost',
-                user = 'root',
-                passwd = 'root',
-                database = 'ssbm_db'
-            )
-            cursor = db.cursor()
-            cursor.execute("show tables")
-            tables = cursor.fetchall()
-            if ('signup_db',) in tables:
-                cursor.execute('SELECT * FROM signup_db WHERE email = %s', (demail,))
-                data = cursor.fetchall()
-                if len(data) > 0:
-                    return render(request, 'signup_page.html', {'error22': 'Email already exists','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
-                else:
-                    db = mysql.connect(
-                        host = "localhost",
-                        user = "root",
-                        passwd = "root",
-                        database = "ssbm_db"
-                    )
-                    cursor = db.cursor()
-                    cursor.execute("INSERT INTO signup_db(name, email, password, repassword, customer_fields, skey) VALUES(%s, %s, %s, %s, %s, %s)", (dname, demail, dpassword, drepassword, dradio, dskey))
-                    db.commit()
-                    return render(request, 'prompt_message.html', {'message': 'User created successfully'})
+            signupTable = userData.objects.filter(email=demail)
+            if signupTable:
+                return render(request, 'signup_page.html', {'error22': 'Email already exists','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
             else:
-                cursor.execute("create table signup_db(id int not nul primary key, name varchar(45), email varchar(45), password varchar(16), repassword varchar(16), customer_fields varchar(20), skey varchar(20))")
-                cursor.execute('SELECT * FROM signup_db WHERE email = %s', (demail,))
-                data = cursor.fetchall()
-                if len(data) > 0:
-                    return render(request, 'signup_page.html', {'error22': 'Email already exists','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
-                else:
-                    db = mysql.connect(
-                        host = "localhost",
-                        user = "root",
-                        passwd = "root",
-                        database = "ssbm_db"
-                    )
-                cursor = db.cursor()
-                cursor.execute("INSERT INTO signup_db(name, email, password, repassword, customer_fields, skey) VALUES(%s, %s, %s, %s, %s, %s)", (dname, demail, dpassword, drepassword, dradio, dskey))
-                db.commit()
+                signupTable = userData(name=dname, email=demail, password=dpassword, repassword=drepassword, customer_fields=dradio, skey=dskey)
+                signupTable.save()
                 return render(request, 'prompt_message.html', {'message': 'User created successfully'})
-            
     else:
         return render(request, 'signup_page.html', {'message': 'Please fill the form'})
-
-
-
-    #     dname = request.POST.get('name')
-    #     demail = request.POST.get('email')
-    #     dpassword = request.POST.get('password')
-    #     drepassword = request.POST.get('repassword')
-    #     if dpassword == drepassword:
-    #         db = mysql.connect(
-    #             host = "localhost",
-    #             user = "root",
-    #             passwd = "root",
-    #             database = "ssbm_db"
-    #         )
-    #         cursor = db.cursor()
-    #         cursor.execute("INSERT INTO users (name, email, password) VALUES (%s, %s, %s)", (dname, demail, dpassword))
-    #         db.commit()
-    #         return render(request, 'signup.html', {'message': 'User created successfully!'})
-    #     else:
-    #         return render(request, 'signup.html', {'message': 'Password does not match!'})
-    # return render(request, 'signup/signup.html')

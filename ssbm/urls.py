@@ -6,18 +6,17 @@ from xevent.views import addEvent,showEvent,bookingSeat,bookSeat,bookSeat2,remov
 from django.urls import path
 from resetpass.views import resetpass
 from ssbm import views
-from dashboard.views import m_dashboard,m_dashboard2,manager_m_dashboard
+from dashboard.views import m_dashboard,m_dashboard2,manager_m_dashboard,mParticularEventStatus
 
 urlpatterns = [
     path("", views.index, name='index'),
     path("about", views.about, name='about'),
     path("services", views.services, name='services'),
     path("booking/", bookingSeat, name='booking'),
-    # path("login", views.login, name='login'),
-    # path("signup", views.signup, name='signup'),
     path("login/", loginaction, name='login'),
     path("signup/", signupaction, name='signup'),
     path("logout/", logoutaction, name='logout'),
+    path("resetPassword/", resetpass, name='resetPassword'),
     path("prmtmsg/", views.prmtmsg, name='prmtmsg'),
     path("prmtmsg2/", views.prmtmsg2, name='prmtmsg2'),
     path("prmtmsg3/", views.prmtmsg3, name='prmtmsg3'),
@@ -25,11 +24,11 @@ urlpatterns = [
     path("public/userMainPage/", views.userMainPage, name='userMainPage'),
     path("public/managerMainPage/", views.managerMainPage, name='managerMainPage'),
     path("public/managerProfile/", views.managerProfile, name='managerProfile'),
-    path("resetPassword/", resetpass, name='resetPassword'),
     path("public/userProfile/", views.userProfile, name='userProfile'),
     path("public/userServices/u_mdashboard/", m_dashboard, name='u_mdashboard'),
     path("public/userServices/show_seatOnDashboard/<passvalue>", m_dashboard2, name='u_mdashboard2'),
     path("public/managerServices/manager_mdashboard/", manager_m_dashboard, name='manager_mdashboard'),
+    path("public/managerServices/mparticularEventStatus/<passvalue>", mParticularEventStatus, name='mparticularEventStatus'),
     path("public/userServices/bookYourSeat/<passvalue>", bookSeat, name="bookYourSeat"),
     path("public/userServices/bookYourSeat2/<passvalue>", bookSeat2, name="bookYourSeat2"),
     path("public/managerServices/managerMS/", views.managerMS, name="managerMS"),

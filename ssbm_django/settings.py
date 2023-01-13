@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'signup',
     'login',
     'xevent',
+    'logout',
 ]
 
 MIDDLEWARE = [

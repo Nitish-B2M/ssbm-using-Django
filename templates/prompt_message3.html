@@ -7,18 +7,17 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body style="background:#2d2;">
+    <body style="background:#6BDF65;">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            var selector_field = document.getElementById("selector_field").value;
             swal({
                 icon: "success",
-                title: "Event added Successfully!!!",
+                title: "Event Remove Successfully!!!",
                 text: "Redirecting to Services page",
                 button: "OK",
             });
             setTimeout(function(){
-                window.location.href = "/public/managerServices/managerMS/";
+                window.location.href = "/public/managerServices/showEvent/";
             }, 3000);
         </script>
         

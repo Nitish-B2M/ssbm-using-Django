@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.  
 class fetchEventRecord(models.Model):
-    id = models.AutoField(primary_key=True)
     ename = models.CharField(max_length=100)
     eorganization = models.CharField(max_length=100)
     edate = models.CharField(max_length=100)

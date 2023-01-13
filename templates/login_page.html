@@ -6,69 +6,71 @@
 {% block navbar-right-box-value %}SignUp{% endblock navbar-right-box-value %}
 {% block navbar-right-box-link %}{% url 'signup' %}{% endblock navbar-right-box-link %}
 
-{% block navbar_op2_link %}/signup/{% endblock navbar_op2_link %}
-{% block navbar_op2_value %}Signup{% endblock navbar_op2_value %}
+{% block navlink1_link %}/signup/{% endblock %}
+{% block navlink1_value %}Signup{% endblock %}
 
-{% block navbar-dd-link2 %}/resetPassword/{% endblock navbar-dd-link2 %}
-{% block navbar-dd-value2 %}Reset Password{% endblock navbar-dd-value2 %}
+{% block navbar-dd-link2 %}/resetPassword/{% endblock %}
+{% block navbar-dd-value2 %}Reset Password{% endblock %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <div class="container container-login ">
-        <div class="myCard">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="myLeftCtn">
-                <form action="{% url 'login' %}" method="post" autocomplte="off"> 
-                  {% csrf_token %}
-                  {% load static %}
-                  <header>Already an account</header>
-                  <div class="form-group">
-                    <i class="fas fa-envelope"></i>
-                    <input type="text" class="myInput" placeholder="email" id="email" name="lemail" required>
-                  </div>
-                  <div class="form-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" class="myInput" placeholder="password" id="password" name="lpassword" required autocomplte="off">
-                  </div>
-                  <div class="form-group radio-css">
-                    <i class="fas fa-eye"></i>
-                    <input type="radio" class="myInput" id="public1" name="lradio1" value="user" required>
-                    <label for="public1">user</label>
-                    <input type="radio" class="myInput" id="public2" name="lradio1" value="manager" required>
-                    <label for="public2">manager</label>
-                    <div class="invalid-feedback">{{error1}}</div>
-                    <div class="invalid-feedback">{{error}}</div>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" value="LOGIN ACCOUNT" id="submit" class="m-btn">
-                  </div>
-                </form>
-              </div>
+      <div class="myCard">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="myLeftCtn">
+              <form action="{% url 'login' %}" method="post" autocomplte="off" id="loginForm"> 
+                {% csrf_token %}
+                {% load static %}
+                <header>Already an account</header>
+                <div class="form-group">
+                  <i class="fas fa-envelope"></i>
+                  <input type="text" class="myInput" placeholder="email" id="email" name="lemail" required>
+                </div>
+                <div class="form-group">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" class="myInput" placeholder="password" id="password" name="lpassword" required autocomplte="off">
+                </div>
+                <div class="form-group radio-css">
+                  <i class="fas fa-eye"></i>
+                  <input type="radio" class="myInput" id="public1" name="lradio1" value="user" required>
+                  <label for="public1">user</label>
+                  <input type="radio" class="myInput" id="public2" name="lradio1" value="manager" required>
+                  <label for="public2">manager</label>
+                  <div class="invalid-feedback">{{error1}}</div>
+                  <div class="invalid-feedback">{{error}}</div>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="LOGIN ACCOUNT" id="submit" class="m-btn">
+                </div>
+              </form>
             </div>
-            <div class="col-md-6">
-              <div class="myRightCtn">
-                <div class="box">
-                  <header>Login</header>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos vero, alias, est itaque blanditiis illum dolorum, recusandae sed .</p> 
-                  <div class="redirect mt-3">
-                    <span>Create an account?</span>
-                    <a href="/signup">Click Here</a>
-                  </div>
-                  <div class="redirect mt-3">
-                    <span>Forgot Password?</span>
-                    <a href="/resetPassword">Click Here</a>
-                  </div>
-                  <div class="redirect mt-3">
-                    <span>Take a Hint</span>
-                    <a href=""><i class="fa fa-info-circle pl-2"></i> Click me</a>
-                  </div>
+          </div>
+          <div class="col-md-6">
+            <div class="myRightCtn">
+              <div class="box">
+                <header>Login</header>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis eos vero, alias, est itaque blanditiis illum dolorum, recusandae sed .</p> 
+                <div class="redirect mt-3">
+                  <span>Create an account?</span>
+                  <a href="/signup">Click Here</a>
+                </div>
+                <div class="redirect mt-3">
+                  <span>Forgot Password?</span>
+                  <a href="/resetPassword">Click Here</a>
+                </div>
+                <div class="redirect mt-3">
+                  <span>Take a Hint</span>
+                  <a href=""><i class="fa fa-info-circle pl-2"></i> Click me</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
     {% block footer %}{% endblock footer %}
 {% endblock content %}
+
+    

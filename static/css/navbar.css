@@ -5,7 +5,7 @@
 }
 .login-btn{
     border: 2px solid aliceblue;
-    border-radius: 10px;
+    border-radius: 6px;
     outline: none;
     color: aliceblue;
 }
@@ -19,4 +19,10 @@
 .login-btn a:hover{
     color: aliceblue;
     outline: none;
+}
+.navbar a{
+    padding-right: 3px;
+}
+#navbarDropdown{
+    padding: 2px 5px 2px 2px;
 }

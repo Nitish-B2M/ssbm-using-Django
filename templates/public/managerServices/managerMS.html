@@ -9,8 +9,8 @@
 {% block navbar-right-box-link %}{% url 'managerProfile' %}{% endblock navbar-right-box-link %} 
 {% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
 
-{% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
-{% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
+{% block navlink1_link %}/public/managerServices/managerMS/{% endblock %}
+{% block navlink1_value %}Service{% endblock %}
 
 {% block navbar-dd-link1 %}/public/managerProfile/{% endblock navbar-dd-link1 %}
 {% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
@@ -35,17 +35,19 @@
     <div class="row pb-4 boxes">
         <div class="col-md-4">
             <img src="{% static 'pics/stadium.jpeg' %}" class="img-fluid" alt="image not found">
-            <p class="text-center pt-2">hfhiijfijijijk kjnjnidcn ijdicjim idcjikd difjciji ujnfvndi dvfin iurfv ihvf cvihv dxio ivscd lih vsdxiksiuedcxi hi vixkjsuidcjio sdjoxijk dixn ovsijdx jdsjvjijdv joik vds ik vdsikesl jcisdk czubjsdcux jsd ixkeods lcuxkjinc xviuk vixnjijkmxinjx  jkn</p>
+            <p class="text-center pt-2">If you've ever wanted to add an event to your blog but didn't know how, this post is for you! We'll walk you through everything you need to know about adding events to your blog, from choosing the right platform to creating and promoting your event.</p>
             <a href="{% url 'addEvent' %}" class="btn btn-danger btn-block">Add Event</a>
         </div>
         <div class="col-md-4">
             <img src="{% static 'pics/top_view.jpeg' %}" class="img-fluid" alt="image not found">
-            <p class="text-center pt-2">hfhiijfijijijk kjnjnidcn ijdicjim idcjikd difjciji ujnfvndi dvfin iurfv ihvf cvihv dxio ivscd lih vsdxiksiuedcxi hi vixkjsuidcjio sdjoxijk dixn ovsijdx jdsjvjijdv joik vds ik vdsikesl jcisdk czubjsdcux jsd ixkeods lcuxkjinc xviuk vixnjijkmxinjx  jkn</p>
+            <p class="text-center pt-2">Show Event
+
+                There are many events that happen every day, and it can be hard to keep track of them all. That's why it's important to have a way to show event information to users. This way, they'll always be in the know about what's happening, and they won't miss out on anything important.</p>
             <a href="{% url 'showEvent' %}" class="btn btn-secondary btn-block">Show Event</a>
         </div>
         <div class="col-md-4">
             <img src="{% static 'pics/stadium.jpeg' %}" class="img-fluid" alt="image not found">
-            <p class="text-center pt-2">hfhiijfijijijk kjnjnidcn ijdicjim idcjikd difjciji ujnfvndi dvfin iurfv ihvf cvihv dxio ivscd lih vsdxiksiuedcxi hi vixkjsuidcjio sdjoxijk dixn ovsijdx jdsjvjijdv joik vds ik vdsikesl jcisdk czubjsdcux jsd ixkeods lcuxkjinc xviuk vixnjijkmxinjx  jkn</p>
+            <p class="text-center pt-2">If you're finished with your event and ready to delete it, simply head to the event page and click the "Delete Event" button at the bottom. Once you confirm that you want to delete the event, it will be permanently removed from our website.</p>
             <a href="{% url 'removeEvent' %}" class="btn btn-info btn-block">Delete Event</a>
         </div>
     </div>

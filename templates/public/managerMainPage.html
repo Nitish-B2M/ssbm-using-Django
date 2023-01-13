@@ -9,8 +9,8 @@
 {% block navbar-right-box-link %}{% url 'managerProfile' %}{% endblock navbar-right-box-link %} 
 {% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
 
-{% block navbar_op2_link %}/public/managerServices/managerMS/{% endblock navbar_op2_link %}
-{% block navbar_op2_value %}Service{% endblock navbar_op2_value %}
+{% block navlink1_link %}/public/managerServices/managerMS/{% endblock  %}
+{% block navlink1_value %}Service{% endblock  %}
 
 {% block navbar-dd-link1 %}/public/managerProfile/{% endblock navbar-dd-link1 %}
 {% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
@@ -86,69 +86,57 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> 
 <div class="container">
-  {% comment %} <div class="myCard"> {% endcomment %}
     <div class="row"> 
       <div class="col-md-12">
         <div class="m_box_content">
-          <h2 class="d-flex justify-content-center py-3">Event</h2>
-          <div class="row">
-            <div class="col-md-4 mb-3 card-main">
+          <h2 class="d-flex justify-content-center py-3">Event List</h2>
+        <div class="row">
+          {% comment %}   <div class="col-md-4 mb-3 card-main">
               <div class="card">
                 <img
                   class="img-fluid"
                   alt="image-not-found"
-                  src="https://source.unsplash.com/300x300/?stadium-cricket"
+                  src="https://source.unsplash.com/300x180/?stadium-cricket"
                 />
                 <div class="card-body">
-                  <h4 class="card-title">Special title treatment</h4>
+                  <h4 class="card-title">Title of Event</h4>
                   <p class="card-text">
                     With supporting text below as a natural lead-in to
                     additional content.
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div class="col-md-4 mb-3 card-main">
-              <div class="card">
-                <img
-                  class="img-fluid"
-                  alt="100%x280"
-                  src="https://source.unsplash.com/300x300/?stadium"
-                />
-                <div class="card-body">
-                  <h4 class="card-title">Special title treatment</h4>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
+            </div> {% endcomment %}
+          {% if event %}
+            {% for e in event %}
+              <div class="col-md-4 mb-3 card-main">
+                <div class="card">
+                  <img
+                    class="img-fluid"
+                    alt="image not found"
+                    src="https://source.unsplash.com/300x180/?{{e.ename}}"
+                    
+                  />
+                  <div class="card-body">
+                    <h4 class="card-title">{{e.ename}}</h4>
+                    <p class="card-text">
+                      {{e.evenue}}
+                    </p>
+                    <p class="card-text">
+                      {{e.edesc}}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col-md-4 mb-3 card-main">
-              <div class="card">
-                <img
-                  class="img-fluid"
-                  alt="100%x280"
-                  src="https://source.unsplash.com/300x300/?stadium-football"
-                />
-                <div class="card-body">
-                  <h4 class="card-title">Special title treatment</h4>
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+            {% endfor %}
+          {% else %}
+              <h4>No Event Found</h4>
+          {% endif %}
         </div>
       </div> 
     </div>
-  {% comment %} </div> {% endcomment %}
 </div>
 
 {% endblock content %} 

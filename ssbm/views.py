@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from xevent.models import fetchEventRecord,fetchSeatRecord
 from signup.models import userData
-import mysql.connector as mysql
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -9,18 +8,25 @@ def about(request):
     if request.session.has_key('name'):
         name=request.session['name']
         profile=request.session['profile']
-        profile1="public/"+profile+"MainPage"
-        navbar_op3_user="/booking/"
-        navbar_op3_value="Booking"
-        navbar_op3_manager="/public/managerServices/managerMS/"
-        navbar_op3_value_manager="Services"
-        userDashboard="/public/userServices/u_mdashboard/"
-        userDashboard_value="Dashboard"
+
+        mainPagelink="public/"+profile+"MainPage"
+        profilelink="public/"+profile+"Profile/"
+
         if profile=="user":
-            return render(request,'about.html',{'name':name,'profile':profile,'profile1':profile1,'navbar_op3':navbar_op3_user,'navbar_op3_value':navbar_op3_value,'userDashboard':userDashboard,'userDashboard_value':userDashboard_value})
+            
+            navlink1="/booking/"
+            navlink1_value="Booking"
+            Dashboard="/public/userServices/u_mdashboard/"
+
+            return render(request,'about.html',{'name':name,'profile':profile,'mainPagelink':mainPagelink,'navlink1':navlink1,'navlink1_value':navlink1_value,'Dashboard':Dashboard,'profilelink':profilelink})
         else:
-            return render(request,'about.html',{'name':name,'profile':profile,'profile1':profile1,'navbar_op3':navbar_op3_manager,'navbar_op3_value':navbar_op3_value_manager})
-        # return render(request,'about.html',{'name':name,'profile':profile,'profile1':profile1,'profile2':profile2})
+
+            navlink1="/public/managerServices/managerMS/"
+            navlink1_value="Services"
+            Dashboard="/public/managerServices/manager_mdashboard/"
+
+            return render(request,'about.html',{'name':name,'profile':profile,'mainPagelink':mainPagelink,'navlink1':navlink1,'navlink1_value':navlink1_value,'Dashboard':Dashboard,'profilelink':profilelink})
+        # return render(request,'about.html',{'name':name,'profile':profile,'navlink1':navlink1,'profile2':profile2})
     else:
         return render(request,'login_page.html')
 def services(request):
@@ -49,14 +55,21 @@ def eprmtmsg(request):
 def userMainPage(request):
     if request.session.has_key('name'):
         name=request.session['name']
-        profile=request.session['profile']
-        return render(request,'public/userMainPage.html',{'name':name})
+        eventdata = fetchEventRecord.objects.all()
+        return render(request,'public/userMainPage.html',{'name':name,'event':eventdata})
     else:
         return render(request,'login_page.html')
 def managerMainPage(request):
     if request.session.has_key('name'):
         name=request.session['name']
-        return render(request,'public/managerMainPage.html',{'name':name})
+        eventdata = fetchEventRecord.objects.all()
+        # image from unsplash.com
+        
+        for i in range(len(eventdata)):
+            modified_ename = eventdata[i].ename
+            modified_ename = modified_ename.replace(" ", "-")
+
+        return render(request,'public/managerMainPage.html',{'name':name,'event':eventdata,'imgLink':modified_ename})
     else:
         return render(request,'login_page.html')
 def userProfile(request):

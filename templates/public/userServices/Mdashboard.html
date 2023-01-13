@@ -9,8 +9,8 @@
 {% block navbar-right-box-link %}{% url 'userProfile' %}{% endblock navbar-right-box-link %} 
 {% block navbar-right-box-value %}<i class="fa fa-user"></i> {{name}}{% endblock navbar-right-box-value %} 
 
-{% block navbar_op2_link %}/booking/{% endblock navbar_op2_link %}
-{% block navbar_op2_value %}Booking{% endblock navbar_op2_value %}
+{% block navlink1_link %}/booking/{% endblock %}
+{% block navlink1_value %}Booking{% endblock %}
 
 {% block navbar-dd-link1 %}/public/userProfile/{% endblock navbar-dd-link1 %}
 {% block navbar-dd-value1 %}Profile{% endblock navbar-dd-value1 %}
@@ -31,7 +31,7 @@
         {% if page_exist %}
             <div class="row p-3">
             {% for e in eventrecord %}
-                <div class="col-md-6" style="max-width: 48%;margin-left: 15px; background:#CCCCFF;">
+                <div class="col-md-6" style="max-width: 48%;margin-left: 15px; background:#CCCCFF; margin-bottom:10px;">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="background-color:{{boxcolor.1}}">
                         <div class="col p-3 d-flex flex-column position-static">
                             <h2 class="text-primary"><span class="fs-4">Name:</span> {{e.ename}}</h2>
@@ -41,8 +41,8 @@
                             <p class="card-text mb-auto">Total Seat : <strong>{% widthratio e.ecol 1 e.erow %}</strong></p>
                             <strong style="margin-left:auto"><a href="{% url 'u_mdashboard2' e.ename %}" class="btn btn-info right">View Status</a></strong>
                         </div>
-                        <div class="col-auto p-0">
-                            <img src="{{img}}" alt="image">
+                        <div class="col-auto p-0" style='display: contents;'>
+                            <img src="https://source.unsplash.com/250x250/?{{e.ename}}" alt="image">
                         </div>
                     </div>
                 </div>

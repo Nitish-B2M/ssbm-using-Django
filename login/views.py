@@ -1,5 +1,6 @@
 from django.shortcuts import render
-import mysql.connector as mysql
+from signup.models import userData
+
 dpassword=''
 demail=''
 dprofile=''
@@ -15,24 +16,21 @@ def loginaction(request):
                 dpassword = value
             if key == 'lradio1':
                 dprofile = value
-        db = mysql.connect(
-            host="localhost",
-            user="root",
-            passwd="root",
-            database="ssbm_db"
-        )
-        cursor = db.cursor()
-        cursor.execute('SELECT * FROM signup_db')
-        data = cursor.fetchall()
-        for row in data:
-            if row[2] == demail and row[3] == dpassword and row[5] == dprofile:
-                request.session['name'] = row[1]
-                request.session['email'] = row[2]
-                request.session['profile'] = row[5]
-                con = {'name': row[1], 'email': row[2], 'customer_fields': row[5]}
-                return render(request, 'prompt_message2.html', {'con': con})
-                # users = {'name': row[0], 'email': row[1], 'customer_fields': row[4]}
-                # return render(request, 'public/userMainPage.html',{'users':users})
-        return render(request, 'login_page.html', {'error': 'useremail or password may be worng!!!','error1':'please re-check profile'})
+        try:
+            Table_email = userData.objects.get(email=demail,password=dpassword)
+            if Table_email:
+                request.session['name']=Table_email.name
+                request.session['email']=Table_email.email
+                request.session['profile']=Table_email.customer_fields
+                if dprofile == 'user':
+                    return render(request, 'prompt_message2.html', {'name':Table_email.name,'profile':Table_email.customer_fields})
+                else:
+                    print("manager")
+                    return render(request, 'prompt_message2.html', {'name':Table_email.name,'profile':Table_email.customer_fields})
+            else:
+                return render(request, 'login_page.html', {'error': 'useremail or password may be worng!!!','error1':'please re-check profile'})
+        except Exception as e:
+            print(e)
+            return render(request, 'login_page.html', {'error': 'useremail or password may be worng!!!','error1':'please re-check profile'})
     else:
         return render(request, 'login_page.html',{'message':'please fill the form'})

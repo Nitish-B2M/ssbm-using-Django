@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
@@ -43,7 +43,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-success bg-success">
       <div class="container">
-        <a class="navbar-brand fs-4 text-white" href="{% block main_page_link %}{% endblock main_page_link%}">SSBM</a>
+        <a class="navbar-brand  text-white" href="{% block main_page_link %}{% endblock main_page_link%}">SSBM</a>
         <button
           class="navbar-toggler"
           type="button"          
@@ -62,14 +62,14 @@
                 class="nav-link text-white active"
                 aria-current="page"
                 href="{% block main_page_link2%}{% endblock main_page_link2%}"
-                >Home</a
-              >
+                >Home
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="{% block navbar_op2_link %}{% endblock navbar_op2_link %}">{% block navbar_op2_value %}{% endblock navbar_op2_value %}</a>
+              <a class="nav-link text-white" href="{% block navlink1_link %}{% endblock navlink1_link %}">{% block navlink1_value %}{% endblock navlink1_value %}</a>
             </li>
             {% comment %} <li class="nav-item">
               <a class="nav-link text-white" href="/more">More</a>
@@ -96,7 +96,7 @@
     {% block content %}{% endblock content %} 
     {% block footer %}
     <div class="container-fluid c-footer pt-4 pb-2">
-      <div class="container">
+      {% comment %} <div class="container"> {% endcomment %}
         <div class="footer">
           <div class="row">
             <div class="col-md-3">
@@ -189,4 +189,7 @@
       crossorigin="anonymous"
     ></script>
   </body>
+  {% block scriptWork %}
+  
+  {% endblock scriptWork %}
 </html>

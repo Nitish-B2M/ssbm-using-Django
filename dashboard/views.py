@@ -91,8 +91,44 @@ def manager_m_dashboard(request):
         for i in seatrecord:
             if i.seatstatus == 1:
                 seatrecord2 = seatrecord2.exclude(seatname=i.seatname)
-        
+        boxcolor=['#F5CBBF','#FFA500','#FFFF00','#88B2A9','#F3AEFA','#D98859','#EE82EE','#DEE6AC','#7B8387','#B4C6D2','#69A488','#A49969','#929292','#BFB393','#62EC4D','#BFA0A5']
+        return render(request, 'public/managerServices/Manager_MDashboard.html', {'seatrecord': seatrecord, 'eventrecord': eventrecord, 'name': name, 'userrecord': userrecord, 'page_exist': page_exist, 'boxcolor':boxcolor})
 
-        # seatleft = userrecord.count() - userrecord2.count()
-        # print(seatleft)
-        return render(request, 'public/managerServices/Manager_MDashboard.html', {'seatrecord': seatrecord, 'eventrecord': eventrecord, 'name': name, 'userrecord': userrecord, 'page_exist': page_exist, })
+def mParticularEventStatus(request,passvalue):
+    if request.session.has_key('name'):
+        name = request.session['name']
+        seatrecord = fetchSeatRecord.objects.all()
+        eventrecord = fetchEventRecord.objects.all()
+        list2 = []
+        list1_data=""
+        cond_count = 0
+        for i in eventrecord:
+            if i.ename == passvalue:
+                cond_count = 1
+                list1_data=i
+
+                list1=[]
+                list2=[]
+                for j in range(1,i.ecol+1):
+                    list1.append(j)
+                for k in range(1,i.erow+1):
+                    list2.append(k)
+                i.ecol=list1
+                i.erow=list2
+                list1=[]
+                list2=[]
+
+        for j in seatrecord:
+            if j.eventname == passvalue:
+                list2.append(j)
+
+        
+        particularEventDetails = fetchSeatRecord.objects.filter(eventname=passvalue)
+        totalSeat = particularEventDetails[0].no_col * particularEventDetails[0].no_row
+        ss = particularEventDetails.filter(seatstatus=1)
+        bookedSeat = len(ss)
+        leftSeat = totalSeat - bookedSeat
+        if cond_count == 1:
+            return render(request, 'public/managerServices/showEventDetail.html', {'name' : name, 'eventdata': list1_data, 'seatdata': list2,'totalSeat': totalSeat, 'bookedSeat': bookedSeat, 'leftSeat': leftSeat})
+        else:
+            return render(request,'public/managerServices/Manager_MDashboard.html',{'name':name,'bseat':eventrecord,'page':''})
