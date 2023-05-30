@@ -36,7 +36,7 @@ class fetchUserRecord(models.Model):
     seattotalprice = models.CharField(max_length=100)
     eventname = models.CharField(max_length=100)
     class Meta:
-        db_table = "event_seat_UserBooking"
+        db_table = "event_seat_UserBooked"
 
 class fetchFeedbackRecord(models.Model):
     feedback_srno = models.AutoField(primary_key=True)

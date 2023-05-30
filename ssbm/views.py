@@ -64,7 +64,7 @@ def managerMainPage(request):
         name=request.session['name']
         eventdata = fetchEventRecord.objects.all()
         # image from unsplash.com
-        
+        modified_ename = ""
         for i in range(len(eventdata)):
             modified_ename = eventdata[i].ename
             modified_ename = modified_ename.replace(" ", "-")

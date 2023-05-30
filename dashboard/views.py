@@ -85,6 +85,8 @@ def manager_m_dashboard(request):
         seatrecord2 = fetchSeatRecord.objects.all()
         eventrecord = fetchEventRecord.objects.all()
         userrecord = fetchUserRecord.objects.all()
+        
+        page_exist = 0
         if eventrecord:
             page_exist = 1
         
