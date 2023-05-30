@@ -66,7 +66,7 @@ def signupaction(request):
             signupTable = userData.objects.filter(email=demail)
             if signupTable:
                 return render(request, 'signup_page.html', {'error22': 'Email already exists','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
-            else:
+            else: 
                 if not mail_formatter_to_new_client(dname,demail):
                     return render(request, 'signup_page.html', {'error24': 'Email not sent','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio': dradio, 'dskey': dskey})
                 signupTable = userData(name=dname, email=demail, password=dpassword, repassword=drepassword, customer_fields=dradio, skey=dskey)

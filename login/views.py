@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from signup.models import userData
 
+
 dpassword=''
 demail=''
 dprofile=''
