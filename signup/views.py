@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import userData
+from .utils import send_email
+
 dname = ''
 demail = ''
 dpassword = ''
@@ -65,8 +67,20 @@ def signupaction(request):
             if signupTable:
                 return render(request, 'signup_page.html', {'error22': 'Email already exists','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio':dpassword, 'dskey': dskey})
             else:
+                if not mail_formatter_to_new_client(dname,demail):
+                    return render(request, 'signup_page.html', {'error24': 'Email not sent','dname': dname, 'demail': demail, 'dpassword': dpassword, 'drepassword': drepassword, 'dradio': dradio, 'dskey': dskey})
                 signupTable = userData(name=dname, email=demail, password=dpassword, repassword=drepassword, customer_fields=dradio, skey=dskey)
                 signupTable.save()
                 return render(request, 'prompt_message.html', {'message': 'User created successfully'})
     else:
         return render(request, 'signup_page.html', {'message': 'Please fill the form'})
+
+
+def mail_formatter_to_new_client(dname,demail):
+    msg = 'Hello '+dname+' you have successfully login to our website, we are happy to see you here. Click on the link below to login to our website. http://127.0.0.1:8000/login/'
+    subject = 'Login Successfull from SSBM'
+    from_email = 'dump.yard.area@gmail.com'
+    if send_email(subject,msg,from_email,[demail]):
+        return True
+    else:
+        return False
