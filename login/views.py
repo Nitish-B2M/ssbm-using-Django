@@ -17,20 +17,16 @@ def loginaction(request):
             if key == 'lradio1':
                 dprofile = value
         try:
-            Table_email = userData.objects.get(email=demail,password=dpassword)
+            Table_email = userData.objects.get(email=demail,password=dpassword,customer_fields=dprofile)
             if Table_email:
                 request.session['name']=Table_email.name
                 request.session['email']=Table_email.email
                 request.session['profile']=Table_email.customer_fields
-                if dprofile == 'user':
-                    return render(request, 'prompt_message2.html', {'name':Table_email.name,'profile':Table_email.customer_fields})
-                else:
-                    print("manager")
-                    return render(request, 'prompt_message2.html', {'name':Table_email.name,'profile':Table_email.customer_fields})
+                return render(request, 'prompt_message2.html', {'name':Table_email.name,'profile':Table_email.customer_fields})
             else:
-                return render(request, 'login_page.html', {'error': 'useremail or password may be worng!!!','error1':'please re-check profile'})
+                return render(request, 'login_page.html', {'error': 'useremail or password may be worng!!!','error1':'please re-check profile,'})
         except Exception as e:
             print(e)
-            return render(request, 'login_page.html', {'error': 'useremail or password may be worng!!!','error1':'please re-check profile'})
+            return render(request, 'login_page.html', {'error': 'useremail or password may be worng!!!','error1':'please re-check profile,'})
     else:
         return render(request, 'login_page.html',{'message':'please fill the form'})
