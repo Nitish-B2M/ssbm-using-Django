@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 from tokenize import Name
-# import ssshhh
 import pymysql
 pymysql.install_as_MySQLdb()
 
@@ -148,11 +147,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,"static")]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+import ssbm_django.bind_value as bind_value
 
 # EMAIL SETTINGS
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'dump.yard.area@gmail.com'
-# EMAIL_HOST_PASSWORD =
+EMAIL_HOST_PASSWORD = bind_value.t
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

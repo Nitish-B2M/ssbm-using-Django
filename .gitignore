@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ignore bind_value,py
+ssbm_django/bind_value.py
